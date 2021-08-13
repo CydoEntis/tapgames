@@ -27,15 +27,6 @@ export default {
       } catch (e) {
         this.error = e.message || "Unable to fetch games";
       }
-
-      let id = await this.getGameList[0].id;
-      console.log("First game data: ", id);
-
-      try {
-        await this.$store.dispatch("fetchGameInfo", id);
-      } catch (e) {
-        this.error = e.message || "Unable to fetch games";
-      }
       this.isLoading = false;
     },
     async getNextGame() {
