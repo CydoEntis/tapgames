@@ -10,6 +10,7 @@ export default {
 				gamesList: [],
 			},
 			currentGame: {},
+			trailer: "",
 		};
 	},
 	mutations,

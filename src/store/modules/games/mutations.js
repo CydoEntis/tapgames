@@ -5,4 +5,7 @@ export default {
 	setCurrentGame(state, payload) {
 		state.currentGame = payload;
 	},
+	setGameTrailer(state, payload) {
+		state.trailer = payload;
+	},
 };

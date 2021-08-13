@@ -2,8 +2,15 @@
   <div class="scene">
     <div class="card">
       <div class="card__face card__face--front">
-        <div class="img-wrapper">
-          <img :src="games[index].image" alt="" />
+        <div class="media-wrapper">
+          <div class="img-wrapper" v-if="!showGameTrailer">
+            <img :src="games[index].image" alt="" @click="fetchGameTrailer" />
+          </div>
+          <div class="video-player" v-else>
+            <div class="close-icon" @click="closeVideo">
+              <i class="fas fa-times-circle"></i>
+            </div>
+          </div>
         </div>
 
         <div class="game-info">
@@ -66,36 +73,28 @@
               </a>
             </div>
           </div>
-
-          <div class="controls">
-            <div class="reaction-btn dislike" @click="getNextGame">
-              <i class="fas fa-heart-broken"></i>
-            </div>
-            <div class="reaction-btn info" @click="flipCard">
-              <i class="fas fa-info-circle"></i>
-            </div>
-            <div class="reaction-btn like" @click="getNextGame">
-              <i class="fas fa-heart"></i>
-            </div>
-          </div>
         </div>
-      </div>
-      <div class="card__face card__face-back">
-        <p class="game-description">
-          {{ getCurrentGame.description }}
-        </p>
-
         <div class="controls">
           <div class="reaction-btn dislike" @click="getNextGame">
             <i class="fas fa-heart-broken"></i>
           </div>
           <div class="reaction-btn info" @click="flipCard">
-            <i class="fas fa-undo-alt"></i>
+            <i class="fas fa-info-circle"></i>
           </div>
           <div class="reaction-btn like" @click="getNextGame">
             <i class="fas fa-heart"></i>
           </div>
         </div>
+      </div>
+      <div class="card__face card__face-back">
+        <div class="controls">
+          <div class="reaction-btn back" @click="flipCard">
+            <i class="fas fa-arrow-circle-left"></i>
+          </div>
+        </div>
+        <p class="game-description">
+          {{ getCurrentGame.description }}
+        </p>
       </div>
     </div>
   </div>
@@ -109,11 +108,21 @@ export default {
   emits: ["getNextGame"],
   data() {
     return {
+      showGameTrailer: false,
+      isFetchingTrailer: false,
       index: 0,
     };
   },
   methods: {
-    getNextGame() {
+    async getNextGame() {
+      this.showTrailer = false;
+
+      try {
+        // await this.fetchGameTrailer();
+      } catch (e) {
+        this.error = e.message || "Unable to fetch games";
+      }
+
       this.index++;
       if (this.index >= this.games.length - 1) {
         this.index = 0;
@@ -129,15 +138,25 @@ export default {
         this.error = e.message || "Unable to fetch games";
       }
     },
+
     async flipCard() {
       await this.fetchGameInfo();
 
       const card = document.querySelector(".card");
       card.classList.toggle("is-flipped");
+
+      const gameDescription = document.querySelector(".game-description");
+      gameDescription.scrollTop = 0;
+    },
+    closeVideo() {
+      const player = document.querySelector(".video-player");
+      player.currentTime = 0;
+
+      this.showGameTrailer = false;
     },
   },
   computed: {
-    ...mapGetters(["getCurrentGame"]),
+    ...mapGetters(["getCurrentGame", "getGameTrailer"]),
     ratingColor() {
       if (this.games[this.index].metacritic >= 75) {
         return "green-rating";
@@ -178,33 +197,44 @@ export default {
   transform: translate(-50%, -50%);
 
   width: 375px;
-  height: 500px;
+  height: 600px;
 
   perspective: 1000px;
 
   .card__face {
     position: absolute;
     width: 100%;
+
     height: 100%;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
+  }
 
-    .img-wrapper {
-      max-width: 375px;
+  .card__face--front {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
-      img {
-        border-radius: 15px;
-        width: 100%;
-        min-height: 200px;
-        max-height: 200px;
+    .media-wrapper {
+      width: 375px;
+
+      .img-wrapper {
+        max-width: 375px;
+
+        img {
+          border-radius: 15px;
+          width: 100%;
+          min-height: 200px;
+          max-height: 200px;
+        }
       }
     }
 
     .game-info {
       width: 100%;
-      height: 200px;
+      height: 310px;
       text-align: left;
-      padding: 15px 5px;
+      padding: 10px 5px;
 
       .green-rating {
         border: 1px solid #6bc849;
@@ -222,6 +252,8 @@ export default {
       }
 
       .game-platforms {
+        height: 40px;
+
         span {
           font-size: 18px;
           margin: 5px;
@@ -229,6 +261,7 @@ export default {
       }
 
       .info-bar {
+        height: 40px;
         display: flex;
         justify-content: space-between;
         padding: 2.5px 5px;
@@ -256,6 +289,7 @@ export default {
       }
 
       .game-details {
+        height: 200px;
         margin: 5px;
 
         h1 {
@@ -271,44 +305,22 @@ export default {
           width: 100%;
           display: flex;
           justify-content: space-between;
+          flex-wrap: wrap;
           padding: 2.5px 0;
 
           .game-genres {
             span {
+              display: inline-block;
               font-size: 14px;
               border: 1px solid #ffffff66;
               border-radius: 15px;
               padding: 1px 5px;
-              margin-right: 5px;
-            }
-
-            .action {
-              color: #c85849;
-            }
-            .strategy {
-              color: #8049c8;
-            }
-            .rpg {
-              color: #6bc849;
-            }
-            .shooter {
-              color: #c85849;
-            }
-            .adventure {
-              color: #526ffd;
-            }
-            .puzzle {
-              color: #c89b49;
-            }
-            .racing {
-              color: #c849c8;
-            }
-            .sports {
-              color: #49b5c8;
+              margin: 2.5px;
             }
           }
 
           .game-esrb {
+            margin: 5px;
             span {
               padding: 1px 5px;
               border-radius: 15px;
@@ -321,6 +333,7 @@ export default {
         }
 
         .game-stores {
+          height: 150px;
           a {
             display: inline-block;
             border: 1px solid #ffffff66;
@@ -340,14 +353,99 @@ export default {
         }
       }
     }
+
+    .controls {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+
+      .reaction-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: none;
+        color: white;
+        font-size: 32px;
+        width: 75px;
+        height: 65px;
+        background: #151515;
+        transition: all 200ms ease-in;
+        border-bottom: 5px solid #151515;
+        cursor: pointer;
+
+        &:hover {
+          border-bottom: 5px solid #ffffff66;
+        }
+      }
+
+      .info {
+        width: 125px;
+        border-radius: 15px 15px 0 0;
+        color: #ffffff66;
+      }
+
+      .like {
+        border-radius: 15px 0 0 0;
+        color: #526ffd;
+      }
+
+      .dislike {
+        border-radius: 0 15px 0 0;
+        color: #c85849;
+      }
+    }
   }
 
   .card__face-back {
     transform: rotateY(180deg);
 
+    .controls {
+      width: 100%;
+
+      .reaction-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: none;
+        color: white;
+        font-size: 32px;
+        width: 65px;
+        height: 55px;
+        background: #151515;
+        transition: all 200ms ease-in;
+        border-bottom: 5px solid #151515;
+        cursor: pointer;
+
+        &:hover {
+          border-bottom: 5px solid #ffffff66;
+        }
+      }
+
+      .back {
+        border-radius: 15px 0 15px 0;
+        color: #ffffff66;
+      }
+    }
+
     .game-description {
+      margin-top: 10px;
       padding: 10px;
       font-size: 14px;
+      height: 300px;
+      overflow-y: scroll;
+
+      &::-webkit-scrollbar {
+        width: 1em;
+      }
+
+      &::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: #151515;
+        outline: 1px solid #151515;
+      }
     }
   }
 }
@@ -357,7 +455,6 @@ export default {
   height: 100%;
   transition: transform 1s;
   transform-style: preserve-3d;
-  cursor: pointer;
 
   background: #202020;
 
@@ -366,49 +463,6 @@ export default {
 
   &.is-flipped {
     transform: rotateY(180deg);
-  }
-
-  .controls {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-
-    .reaction-btn {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: none;
-      color: white;
-      font-size: 32px;
-      width: 75px;
-      height: 65px;
-      background: #151515;
-      transition: all 200ms ease-in;
-      border-bottom: 5px solid #151515;
-
-      &:hover {
-        border-bottom: 5px solid #ffffff66;
-      }
-    }
-
-    .info {
-      width: 125px;
-      border-radius: 15px 15px 0 0;
-      color: #ffffff66;
-    }
-
-    .like {
-      border-radius: 15px 0 0 0;
-      color: #526ffd;
-    }
-
-    .dislike {
-      border-radius: 0 15px 0 0;
-      color: #c85849;
-    }
   }
 }
 </style>

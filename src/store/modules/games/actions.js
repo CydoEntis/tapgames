@@ -52,4 +52,15 @@ export default {
 
 		context.commit("setCurrentGame", currentGame);
 	},
+	async fetchGameTrailer(context, id) {
+		const apiKey = "4ddf56496a3f4f1fb9d1338eebb64df7";
+		const apiUrl = `https://api.rawg.io/api/games/${id}/movies?key=`;
+
+		const res = await fetch(apiUrl + apiKey);
+		const data = await res.json();
+
+		let trailer = data.results[0].data.max;
+
+		context.commit("setGameTrailer", trailer);
+	},
 };

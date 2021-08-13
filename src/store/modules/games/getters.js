@@ -8,4 +8,7 @@ export default {
 	getCurrentGame(state) {
 		return state.currentGame;
 	},
+	getGameTrailer(state) {
+		return state.trailer;
+	},
 };
