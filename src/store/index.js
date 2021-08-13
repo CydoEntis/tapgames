@@ -1,12 +1,9 @@
-import { createStore } from 'vuex'
+import { createStore } from "vuex";
+
+import gamesModule from "./modules/games";
 
 export default createStore({
-  state: {
-  },
-  mutations: {
-  },
-  actions: {
-  },
-  modules: {
-  }
-})
+	modules: {
+		gamesModule,
+	},
+});
