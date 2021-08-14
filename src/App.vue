@@ -35,4 +35,40 @@ body {
     }
   }
 }
+
+.card__face {
+  position: absolute;
+  width: 100%;
+
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.game-ratings {
+  padding: 5px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.green-rating {
+  border: 1px solid #6bc849;
+  color: #6bc849;
+}
+
+.yellow-rating {
+  border: 1px solid #fdcb52;
+  color: #fdcb52;
+}
+
+.red-rating {
+  border: 1px solid #c85849;
+  color: #c85849;
+}
+
+@keyframes slide-out-right {
+  100% {
+    right: 100%;
+  }
+}
 </style>
