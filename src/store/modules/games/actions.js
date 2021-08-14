@@ -9,7 +9,6 @@ export default {
 			nextPage: data.next,
 			gamesList: [],
 		};
-		console.log(data);
 
 		data.results.forEach((result) => {
 			let gameInfo = {
@@ -29,7 +28,6 @@ export default {
 			gameData.gamesList.push(gameInfo);
 		});
 
-		console.log(gameData);
 		context.commit("setGameData", gameData);
 	},
 	async fetchGameInfo(context, id) {
@@ -39,16 +37,12 @@ export default {
 		const res = await fetch(apiUrl + apiKey);
 		const data = await res.json();
 
-		console.log(data);
-
 		let currentGame = {
 			id: data.id,
 			name: data.name,
 			description: data.description_raw,
 			publishers: data.publishers,
 		};
-
-		console.log(currentGame);
 
 		context.commit("setCurrentGame", currentGame);
 	},
@@ -63,4 +57,8 @@ export default {
 
 		context.commit("setGameTrailer", trailer);
 	},
+	incrementIndex({ context, state }) {
+		state.index++;
+	},
+	addToLikedGames(context, gameInfo) {},
 };

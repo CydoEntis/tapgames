@@ -1,14 +1,17 @@
 <template>
-  <div class="scene">
-    <loading-spinner v-if="isLoading" />
-    <div v-else class="card">
-      <card-front />
-      <card-back />
+  <transition>
+    <div class="scene" v-if="getShowImage">
+      <loading-spinner v-if="isLoading" />
+      <div v-else class="card">
+        <card-front />
+        <card-back />
+      </div>
     </div>
-  </div>
+  </transition>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import LoadingSpinner from "../spinners/LoadingSpinner.vue";
 import CardBack from "./card-components/card-back-components/CardBack.vue";
 import CardFront from "./card-components/card-front-components/CardFront.vue";
@@ -23,6 +26,7 @@ export default {
   },
   data() {
     return {
+      showImage: true,
       isLoading: false,
     };
   },
@@ -36,6 +40,12 @@ export default {
       }
       this.isLoading = false;
     },
+    increment() {
+      this.$store.dispatch("incrementIndex");
+    },
+  },
+  computed: {
+    ...mapGetters(["getIndex", "getShowImage"]),
   },
   async created() {
     const apiUrl = "https://api.rawg.io/api/games?key=";
@@ -48,10 +58,10 @@ export default {
 
 <style lang="scss" scoped>
 .scene {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  /* position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center; */
 
   width: 375px;
   height: 600px;
@@ -71,6 +81,58 @@ export default {
 
   &.is-flipped {
     transform: rotateY(180deg);
+  }
+}
+
+.v-enter-active {
+  animation: fade-in 0.3s ease-out;
+}
+
+.v-leave-active {
+  animation: fade-out 0.3s ease-out;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  25% {
+    opacity: 0.25;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  75% {
+    opacity: 0.75;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  100% {
+    opacity: 0;
+  }
+
+  75% {
+    opacity: 0.25;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  25% {
+    opacity: 0.75;
+  }
+
+  0% {
+    opacity: 1;
   }
 }
 </style>

@@ -11,6 +11,10 @@ export default {
 			},
 			currentGame: {},
 			trailer: "",
+			index: 0,
+			showImage: true,
+			likedGames: [],
+			dislikedGames: [],
 		};
 	},
 	mutations,

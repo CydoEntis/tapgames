@@ -1,15 +1,14 @@
 <template>
   <div class="img-wrapper">
-    <img :src="getGameList[index].image" alt="" />
+    <img :src="getGameList[getIndex].image" alt="" />
   </div>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
 export default {
-  props: ["index"],
   computed: {
-    ...mapGetters(["getGameList"]),
+    ...mapGetters(["getGameList", "getIndex"]),
   },
 };
 </script>

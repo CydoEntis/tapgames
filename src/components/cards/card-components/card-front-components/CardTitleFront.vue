@@ -1,14 +1,13 @@
 <template>
-  <h2>{{ getGameList[index].name }}</h2>
+  <h2>{{ getGameList[getIndex].name }}</h2>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
 
 export default {
-  props: ["index"],
   computed: {
-    ...mapGetters(["getGameList"]),
+    ...mapGetters(["getGameList", "getIndex"]),
   },
 };
 </script>

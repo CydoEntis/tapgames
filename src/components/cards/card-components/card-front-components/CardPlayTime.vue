@@ -1,7 +1,8 @@
 <template>
   <div class="game-playtime">
     <span
-      ><i class="far fa-clock"></i> {{ getGameList[index].playtime }}hrs</span
+      ><i class="far fa-clock"></i>
+      {{ getGameList[getIndex].playtime }}hrs</span
     >
   </div>
 </template>
@@ -10,9 +11,8 @@
 import { mapGetters } from "vuex";
 
 export default {
-  props: ["index"],
   computed: {
-    ...mapGetters(["getGameList"]),
+    ...mapGetters(["getGameList", "getIndex"]),
   },
 };
 </script>

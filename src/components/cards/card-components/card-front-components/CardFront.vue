@@ -20,7 +20,11 @@
         <card-stores :index="index" />
       </div>
     </div>
-    <card-front-controls @get-next-game="getNextGame" @flip-card="flipCard" />
+    <card-front-controls
+      @dislike-game="getNextGame"
+      @flip-card="flipCard"
+      @like-game="likeGame"
+    />
   </div>
 </template>
 
@@ -64,22 +68,38 @@ export default {
       }
       this.isLoading = false;
     },
+    async likeGame() {
+      await this.fetchGameInfo();
+
+      let gameInfo = {
+        ...this.getGameList[this.getIndex],
+        description: this.getCurrentGame.description,
+        publishers: this.getCurrentGame.publishers,
+      };
+
+      this.getNextGame();
+
+      console.log(gameInfo);
+    },
     async getNextGame() {
-      this.index++;
+      this.$store.commit("setShowImage", false);
 
-      let currentCard = document.querySelector(".card");
-      currentCard.animate;
+      this.$store.dispatch("incrementIndex");
 
-      if (this.index >= this.getGameList.length) {
-        this.index = 0;
+      if (this.getIndex >= this.getGameList.length) {
+        this.$store.commit("setIndex", 0);
+        console.log("Reset Index: ", this.getIndex);
 
         const nextPageUrl = this.getNextPage;
         await this.fetchGames(nextPageUrl);
       }
-      console.log(this.index);
+
+      setTimeout(() => {
+        this.$store.commit("setShowImage", true);
+      }, 1000);
     },
     async fetchGameInfo() {
-      let id = this.getGameList[this.index].id;
+      let id = this.getGameList[this.getIndex].id;
 
       try {
         await this.$store.dispatch("fetchGameInfo", id);
@@ -99,7 +119,7 @@ export default {
     },
   },
   computed: {
-    ...mapGetters(["getGameList", "getNextPage"]),
+    ...mapGetters(["getGameList", "getNextPage", "getIndex", "getCurrentGame"]),
   },
 };
 </script>

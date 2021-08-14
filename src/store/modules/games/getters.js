@@ -11,4 +11,10 @@ export default {
 	getGameTrailer(state) {
 		return state.trailer;
 	},
+	getIndex(state) {
+		return state.index;
+	},
+	getShowImage(state) {
+		return state.showImage;
+	},
 };

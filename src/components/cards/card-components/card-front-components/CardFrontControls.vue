@@ -1,12 +1,12 @@
 <template>
   <div class="controls">
-    <div class="reaction-btn dislike" @click="getNextGame">
+    <div class="reaction-btn dislike" @click="dislikeGame">
       <i class="fas fa-heart-broken"></i>
     </div>
     <div class="reaction-btn info" @click="flipCard">
       <i class="fas fa-info-circle"></i>
     </div>
-    <div class="reaction-btn like" @click="getNextGame">
+    <div class="reaction-btn like" @click="likeGame">
       <i class="fas fa-heart"></i>
     </div>
   </div>
@@ -14,10 +14,13 @@
 
 <script>
 export default {
-  emits: ["getNextGame", "flipCard"],
+  emits: ["likeGame", "dislikeGame", "flipCard"],
   methods: {
-    getNextGame() {
-      this.$emit("getNextGame");
+    likeGame() {
+      this.$emit("likeGame");
+    },
+    dislikeGame() {
+      this.$emit("dislikeGame");
     },
     flipCard() {
       this.$emit("flipCard");

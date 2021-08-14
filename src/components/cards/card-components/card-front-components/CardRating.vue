@@ -2,9 +2,9 @@
   <div
     class="game-ratings"
     :class="ratingColor"
-    v-if="getGameList[index].metacritic"
+    v-if="getGameList[getIndex].metacritic"
   >
-    <span>{{ getGameList[index].metacritic }}</span>
+    <span>{{ getGameList[getIndex].metacritic }}</span>
   </div>
 </template>
 
@@ -12,13 +12,12 @@
 import { mapGetters } from "vuex";
 
 export default {
-  props: ["index"],
   computed: {
-    ...mapGetters(["getGameList"]),
+    ...mapGetters(["getGameList", "getIndex"]),
     ratingColor() {
-      if (this.getGameList[this.index].metacritic >= 75) {
+      if (this.getGameList[this.getIndex].metacritic >= 75) {
         return "green-rating";
-      } else if (this.getGameList[this.index].metacritic >= 50) {
+      } else if (this.getGameList[this.getIndex].metacritic >= 50) {
         return "yellow-rating";
       } else {
         return "red-rating";

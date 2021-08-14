@@ -15,7 +15,7 @@ export default {
 
 <style scoped lang="scss">
 h2 {
-  margin-right: 20px;
+  width: 100%;
   padding: 10px;
   font-size: 28px;
 }

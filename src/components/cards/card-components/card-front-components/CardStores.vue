@@ -1,7 +1,7 @@
 <template>
   <div class="game-stores">
     <a
-      v-for="store in getGameList[index].stores"
+      v-for="store in getGameList[getIndex].stores"
       :key="store.id"
       :href="'https://' + store.store.domain"
     >
@@ -14,9 +14,8 @@
 import { mapGetters } from "vuex";
 
 export default {
-  props: ["index"],
   computed: {
-    ...mapGetters(["getGameList"]),
+    ...mapGetters(["getGameList", "getIndex"]),
   },
 };
 </script>

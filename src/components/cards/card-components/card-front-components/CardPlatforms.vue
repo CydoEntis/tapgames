@@ -1,21 +1,21 @@
 <template>
   <div class="game-platforms">
-    <span v-show="getGameList[index].platforms.playstation">
+    <span v-show="getGameList[getIndex].platforms.playstation">
       <i class="fab fa-playstation"></i>
     </span>
-    <span v-show="getGameList[index].platforms.xbox">
+    <span v-show="getGameList[getIndex].platforms.xbox">
       <i class="fab fa-xbox"></i>
     </span>
-    <span v-show="getGameList[index].platforms.nintendo">
+    <span v-show="getGameList[getIndex].platforms.nintendo">
       <i class="fas fa-gamepad"></i>
     </span>
-    <span v-show="getGameList[index].platforms.pc">
+    <span v-show="getGameList[getIndex].platforms.pc">
       <i class="fab fa-windows"></i>
     </span>
-    <span v-show="getGameList[index].platforms.android">
+    <span v-show="getGameList[getIndex].platforms.android">
       <i class="fab fa-android"></i>
     </span>
-    <span v-show="getGameList[index].platforms.apple">
+    <span v-show="getGameList[getIndex].platforms.apple">
       <i class="fab fa-apple"></i>
     </span>
   </div>
@@ -25,9 +25,8 @@
 import { mapGetters } from "vuex";
 
 export default {
-  props: ["index"],
   computed: {
-    ...mapGetters(["getGameList"]),
+    ...mapGetters(["getGameList", "getIndex"]),
   },
 };
 </script>

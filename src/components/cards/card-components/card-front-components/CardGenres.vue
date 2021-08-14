@@ -2,7 +2,7 @@
   <div class="game-genres">
     <span
       :class="genreColor"
-      v-for="genre in getGameList[index].genres"
+      v-for="genre in getGameList[getIndex].genres"
       :key="genre"
     >
       {{ genre.name }}
@@ -14,24 +14,24 @@
 import { mapGetters } from "vuex";
 
 export default {
-  props: ["index"],
   computed: {
-    ...mapGetters(["getGameList"]),
+    ...mapGetters(["getGameList", "getIndex"]),
     genreColor() {
-      if (this.getGameList[this.index].genres.name === "Action")
+      if (this.getGameList[this.getIndex].genres.name === "Action")
         return "action";
-      else if (this.getGameList[this.index].genres.name === "Strategy")
+      else if (this.getGameList[this.getIndex].genres.name === "Strategy")
         return "strategy";
-      else if (this.getGameList[this.index].genres.name === "RPG") return "rpg";
-      else if (this.getGameList[this.index].genres.name === "Shooter")
+      else if (this.getGameList[this.getIndex].genres.name === "RPG")
+        return "rpg";
+      else if (this.getGameList[this.getIndex].genres.name === "Shooter")
         return "shooter";
-      else if (this.getGameList[this.index].genres.name === "Adventure")
+      else if (this.getGameList[this.getIndex].genres.name === "Adventure")
         return "adventure";
-      else if (this.getGameList[this.index].genres.name === "Puzzle")
+      else if (this.getGameList[this.getIndex].genres.name === "Puzzle")
         return "puzzle";
-      else if (this.getGameList[this.index].genres.name === "Racing")
+      else if (this.getGameList[this.getIndex].genres.name === "Racing")
         return "racing";
-      else if (this.getGameList[this.index].genres.name === "Sport")
+      else if (this.getGameList[this.getIndex].genres.name === "Sport")
         return "sport";
     },
   },

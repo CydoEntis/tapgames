@@ -8,4 +8,10 @@ export default {
 	setGameTrailer(state, payload) {
 		state.trailer = payload;
 	},
+	setIndex(state, payload) {
+		state.index = payload;
+	},
+	setShowImage(state, payload) {
+		state.showImage = payload;
+	},
 };

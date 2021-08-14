@@ -1,24 +1,27 @@
 <template>
   <div class="home">
-    <p v-if="isLoading">Loading...</p>
-    <game-card v-else />
-    <!-- <game-card v-else :games="getGameList" @getNextGame="getNextGame" /> -->
+    <side-bar />
+    <main-content />
   </div>
 </template>
 
 <script>
-import GameCard from "../components/cards/GameCard.vue";
-
+import MainContent from "../components/ui/content/MainContent.vue";
+import SideBar from "../components/ui/sidebar/SideBar.vue";
 export default {
-  components: { GameCard },
+  components: {
+    MainContent,
+    SideBar,
+  },
   name: "Home",
   data() {
-    return {
-      isLoading: false,
-    };
+    return {};
   },
 };
 </script>
 
 <style lang="scss" scoped>
+.home {
+  display: flex;
+}
 </style>
