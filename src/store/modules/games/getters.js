@@ -17,4 +17,7 @@ export default {
 	getShowImage(state) {
 		return state.showImage;
 	},
+	getLikedGames(state) {
+		return state.likedGames;
+	},
 };

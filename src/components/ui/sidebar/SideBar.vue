@@ -8,8 +8,27 @@
 <script>
 import TheTitle from "../../TheTitle.vue";
 import LikedGames from "./LikedGames.vue";
+
+import { loadLikedGamesFromStorage } from "../../../helpers/storage";
+import { mapGetters } from "vuex";
+
 export default {
   components: { TheTitle, LikedGames },
+  data() {
+    return {};
+  },
+  methods: {
+    async loadLikedGames() {
+      const likedGames = loadLikedGamesFromStorage();
+      await this.$store.commit("setLikedGames", likedGames);
+    },
+  },
+  computed: {
+    ...mapGetters(["getLikedGames"]),
+  },
+  created() {
+    this.loadLikedGames();
+  },
 };
 </script>
 

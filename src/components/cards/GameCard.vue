@@ -16,6 +16,8 @@ import LoadingSpinner from "../spinners/LoadingSpinner.vue";
 import CardBack from "./card-components/card-back-components/CardBack.vue";
 import CardFront from "./card-components/card-front-components/CardFront.vue";
 
+import { loadLikedGamesFromStorage } from "../../helpers/storage";
+
 export default {
   props: ["games"],
   emit: ["getNextGame"],
@@ -48,10 +50,17 @@ export default {
     ...mapGetters(["getIndex", "getShowImage"]),
   },
   async created() {
-    const apiUrl = "https://api.rawg.io/api/games?key=";
-    const apiKey = "4ddf56496a3f4f1fb9d1338eebb64df7";
+    const likedGames = loadLikedGamesFromStorage();
 
-    this.fetchGames(apiUrl + apiKey);
+    if (likedGames === undefined) {
+      const apiUrl = "https://api.rawg.io/api/games?key=";
+      const apiKey = "4ddf56496a3f4f1fb9d1338eebb64df7";
+
+      await this.fetchGames(apiUrl + apiKey);
+    } else {
+      let lastEntry = likedGames.length - 1;
+      await this.fetchGames(likedGames[lastEntry].page);
+    }
   },
 };
 </script>

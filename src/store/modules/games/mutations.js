@@ -14,4 +14,7 @@ export default {
 	setShowImage(state, payload) {
 		state.showImage = payload;
 	},
+	setLikedGames(state, payload) {
+		state.likedGames = payload;
+	},
 };

@@ -41,6 +41,8 @@ import CardPlayTime from "./CardPlayTime.vue";
 
 import { mapGetters } from "vuex";
 
+import { saveToLocalStorage } from "../../../../helpers/storage";
+
 export default {
   components: {
     CardImage,
@@ -71,15 +73,37 @@ export default {
     async likeGame() {
       await this.fetchGameInfo();
 
+      // Checks to see if there are any games in local storage if not gives an empty array.
+      let likedGames;
+      let gameExists;
+
+      if (this.getLikedGames === undefined) likedGames = [];
+      else likedGames = this.getLikedGames;
+
       let gameInfo = {
+        index: this.getIndex,
+        page: this.getNextPage,
         ...this.getGameList[this.getIndex],
         description: this.getCurrentGame.description,
         publishers: this.getCurrentGame.publishers,
       };
 
-      this.getNextGame();
+      for (let game of likedGames) {
+        if (game.id === gameInfo.id) {
+          gameExists = true;
+        }
+      }
 
-      console.log(gameInfo);
+      if (gameExists) this.getNextGame();
+      else {
+        likedGames.push(gameInfo);
+
+        this.$store.commit("setLikedGames", likedGames);
+
+        saveToLocalStorage(likedGames);
+
+        this.getNextGame();
+      }
     },
     async getNextGame() {
       this.$store.commit("setShowImage", false);
@@ -119,7 +143,13 @@ export default {
     },
   },
   computed: {
-    ...mapGetters(["getGameList", "getNextPage", "getIndex", "getCurrentGame"]),
+    ...mapGetters([
+      "getGameList",
+      "getNextPage",
+      "getIndex",
+      "getCurrentGame",
+      "getLikedGames",
+    ]),
   },
 };
 </script>
