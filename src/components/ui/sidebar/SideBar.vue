@@ -1,6 +1,6 @@
 <template>
   <div class="side-bar">
-    <the-title />
+    <the-title title="Dredge" />
     <liked-games />
   </div>
 </template>
