@@ -2,6 +2,9 @@ export default {
 	setGameData(state, payload) {
 		state.gameData = payload;
 	},
+	setPageNumber(state, payload) {
+		state.pageNumber = payload;
+	},
 	setCurrentGame(state, payload) {
 		state.currentGame = payload;
 	},

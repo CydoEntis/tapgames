@@ -9,6 +9,7 @@ export default {
 				nextPage: "",
 				gamesList: [],
 			},
+			pageNumber: 1,
 			currentGame: {},
 			trailer: "",
 			index: 0,

@@ -1,5 +1,5 @@
 <template>
-  <h1>Gameder</h1>
+  <h1>Think Of Good Title Stupid</h1>
 </template>
 
 <script>

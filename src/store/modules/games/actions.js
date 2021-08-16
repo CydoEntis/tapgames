@@ -11,13 +11,20 @@ export default {
 		};
 
 		data.results.forEach((result) => {
+			let esrb;
+
+			if (result.esrb_rating !== null) {
+				esrb = result.esrb_rating.name;
+			} else esrb = "N/A";
+
 			let gameInfo = {
 				id: result.id,
+				currentPage: api,
 				name: result.name,
 				image: result.background_image,
 				platforms: assignPlatforms(result.platforms),
 				metacritic: result.metacritic,
-				rating: result.esrb_rating,
+				rating: esrb,
 				released: result.released,
 				stores: result.stores,
 				genres: result.genres,
@@ -46,17 +53,7 @@ export default {
 
 		context.commit("setCurrentGame", currentGame);
 	},
-	async fetchGameTrailer(context, id) {
-		const apiKey = "4ddf56496a3f4f1fb9d1338eebb64df7";
-		const apiUrl = `https://api.rawg.io/api/games/${id}/movies?key=`;
 
-		const res = await fetch(apiUrl + apiKey);
-		const data = await res.json();
-
-		let trailer = data.results[0].data.max;
-
-		context.commit("setGameTrailer", trailer);
-	},
 	incrementIndex({ context, state }) {
 		state.index++;
 	},

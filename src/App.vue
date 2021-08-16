@@ -66,9 +66,8 @@ body {
   color: #c85849;
 }
 
-@keyframes slide-out-right {
-  100% {
-    right: 100%;
-  }
+.no-rating {
+  border: 1px solid #ffffff66;
+  color: #ffffff66;
 }
 </style>

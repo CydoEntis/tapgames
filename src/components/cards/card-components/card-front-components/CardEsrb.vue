@@ -2,23 +2,25 @@
 
 <template>
   <div class="game-esrb">
-    <span :class="esrbColor">{{ getGameList[index].rating.name }}</span>
+    <span :class="esrbColor">{{ getGameList[getIndex].rating }}</span>
   </div>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
 export default {
-  props: ["index"],
   computed: {
-    ...mapGetters(["getGameList"]),
+    ...mapGetters(["getGameList", "getIndex"]),
     esrbColor() {
-      if (this.getGameList[this.index].rating.name === null) return;
-      else if (this.getGameList[this.index].rating.name === "Mature")
+      if (this.getGameList[this.getIndex].rating === "Mature")
         return "red-rating";
-      else if (this.getGameList[this.index].rating.name === "Teen")
+      else if (this.getGameList[this.getIndex].rating === "Teen")
         return "yellow-rating";
-      else return "green-rating";
+      else if (this.getGameList[this.getIndex].rating === "Everyone 10+")
+        return "green-rating";
+      else if (this.getGameList[this.getIndex].rating === "N/A") {
+        return "no-rating";
+      }
     },
   },
 };

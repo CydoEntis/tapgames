@@ -52,14 +52,18 @@ export default {
   async created() {
     const likedGames = loadLikedGamesFromStorage();
 
-    if (likedGames === undefined) {
-      const apiUrl = "https://api.rawg.io/api/games?key=";
-      const apiKey = "4ddf56496a3f4f1fb9d1338eebb64df7";
+    const apiUrl = "https://api.rawg.io/api/games?key=";
+    const apiKey = "4ddf56496a3f4f1fb9d1338eebb64df7";
+    const pageNumber = `&page=1`;
+    const fullUrl = apiUrl + apiKey + pageNumber;
 
-      await this.fetchGames(apiUrl + apiKey);
+    await this.fetchGames(fullUrl);
+    if (likedGames === undefined) {
+      await this.fetchGames(fullUrl);
     } else {
       let lastEntry = likedGames.length - 1;
-      await this.fetchGames(likedGames[lastEntry].page);
+      await this.fetchGames(likedGames[lastEntry].currentPage);
+      this.$store.commit("setIndex", likedGames[lastEntry].index + 1);
     }
   },
 };

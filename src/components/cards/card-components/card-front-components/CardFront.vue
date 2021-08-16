@@ -70,29 +70,46 @@ export default {
       }
       this.isLoading = false;
     },
-    async likeGame() {
-      await this.fetchGameInfo();
-
+    checkStorageForLikedGames() {
       // Checks to see if there are any games in local storage if not gives an empty array.
       let likedGames;
-      let gameExists;
 
       if (this.getLikedGames === undefined) likedGames = [];
       else likedGames = this.getLikedGames;
 
+      return likedGames;
+    },
+    // checkStorageForDislikedGames() {
+    //   let dislikedGames;
+
+    //   if (this.getDislikedGames === undefined) dislikedGames = [];
+    //   else dislikedGames = this.getDislikedGames;
+
+    //   return dislikedGames;
+    // },
+    checkIfGameIsInLocalStorage(games, gameInfo) {
+      for (let game of games) {
+        if (game.id === gameInfo.id) {
+          return true;
+        }
+
+        return false;
+      }
+    },
+    async likeGame() {
+      await this.fetchGameInfo();
+
+      const likedGames = this.checkStorageForLikedGames();
+
       let gameInfo = {
         index: this.getIndex,
-        page: this.getNextPage,
+        currentPage: this.getGameList.currentPage,
         ...this.getGameList[this.getIndex],
         description: this.getCurrentGame.description,
         publishers: this.getCurrentGame.publishers,
       };
 
-      for (let game of likedGames) {
-        if (game.id === gameInfo.id) {
-          gameExists = true;
-        }
-      }
+      let gameExists = this.checkIfGameIsInLocalStorage(likedGames, gameInfo);
 
       if (gameExists) this.getNextGame();
       else {
