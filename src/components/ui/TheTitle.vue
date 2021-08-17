@@ -10,8 +10,6 @@ export default {
 
 <style lange="scss" scoped>
 h1 {
-  width: 100%; /* Remove */
-  border-bottom: 3px solid #333; /* Remove */
   padding: 5px 15px;
 }
 </style>

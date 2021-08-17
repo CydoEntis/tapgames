@@ -20,4 +20,10 @@ export default {
 	getLikedGames(state) {
 		return state.likedGames;
 	},
+	getDislikedGames(state) {
+		return state.dislikedGames;
+	},
+	getLastEntry(state) {
+		return state.lastEntry;
+	},
 };

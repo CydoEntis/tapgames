@@ -1,27 +1,27 @@
 <template>
   <div class="card__face card__face--front">
-    <card-image :index="index" />
+    <card-image />
     <div class="card-info">
       <div class="align">
-        <card-platforms :index="index" />
-        <card-rating :index="index" />
+        <card-platforms />
+        <card-rating />
       </div>
       <div class="align">
-        <card-title-front :index="index" />
+        <card-title-front />
       </div>
       <div class="align">
-        <card-genres :index="index" />
-        <card-esrb :index="index" />
+        <card-genres />
+        <card-esrb />
       </div>
       <div class="align">
-        <card-play-time :index="index" />
+        <card-play-time />
       </div>
       <div class="align">
-        <card-stores :index="index" />
+        <card-stores />
       </div>
     </div>
     <card-front-controls
-      @dislike-game="getNextGame"
+      @dislike-game="dislikeGame"
       @flip-card="flipCard"
       @like-game="likeGame"
     />
@@ -56,9 +56,7 @@ export default {
     CardPlayTime,
   },
   data() {
-    return {
-      index: 0,
-    };
+    return {};
   },
   methods: {
     async fetchGames(api) {
@@ -70,23 +68,15 @@ export default {
       }
       this.isLoading = false;
     },
-    checkStorageForLikedGames() {
+    checkStorageForGames(gameList) {
       // Checks to see if there are any games in local storage if not gives an empty array.
-      let likedGames;
+      let games;
 
-      if (this.getLikedGames === undefined) likedGames = [];
-      else likedGames = this.getLikedGames;
+      if (gameList === undefined) games = [];
+      else games = gameList;
 
-      return likedGames;
+      return games;
     },
-    // checkStorageForDislikedGames() {
-    //   let dislikedGames;
-
-    //   if (this.getDislikedGames === undefined) dislikedGames = [];
-    //   else dislikedGames = this.getDislikedGames;
-
-    //   return dislikedGames;
-    // },
     checkIfGameIsInLocalStorage(games, gameInfo) {
       for (let game of games) {
         if (game.id === gameInfo.id) {
@@ -99,9 +89,10 @@ export default {
     async likeGame() {
       await this.fetchGameInfo();
 
-      const likedGames = this.checkStorageForLikedGames();
+      const likedGames = this.checkStorageForGames(this.getLikedGames);
 
       let gameInfo = {
+        entryTime: Date.now(),
         index: this.getIndex,
         currentPage: this.getGameList.currentPage,
         ...this.getGameList[this.getIndex],
@@ -117,7 +108,42 @@ export default {
 
         this.$store.commit("setLikedGames", likedGames);
 
-        saveToLocalStorage(likedGames);
+        saveToLocalStorage("likedGames", likedGames);
+
+        this.$store.commit("setLastEntry", "like");
+
+        this.getNextGame();
+      }
+    },
+    async dislikeGame() {
+      await this.fetchGameInfo();
+
+      const dislikedGames = this.checkStorageForGames(this.getDislikedGames);
+      console.log(typeof dislikedGames);
+
+      let gameInfo = {
+        entryTime: Date.now(),
+        index: this.getIndex,
+        currentPage: this.getGameList.currentPage,
+        ...this.getGameList[this.getIndex],
+        description: this.getCurrentGame.description,
+        publishers: this.getCurrentGame.publishers,
+      };
+
+      let gameExists = this.checkIfGameIsInLocalStorage(
+        dislikedGames,
+        gameInfo
+      );
+
+      if (gameExists) this.getNextGame();
+      else {
+        dislikedGames.push(gameInfo);
+
+        this.$store.commit("setDislikedGames", dislikedGames);
+
+        saveToLocalStorage("dislikedGames", dislikedGames);
+
+        this.$store.commit("setLastEntry", "dislike");
 
         this.getNextGame();
       }
@@ -166,6 +192,7 @@ export default {
       "getIndex",
       "getCurrentGame",
       "getLikedGames",
+      "getDislikedGames",
     ]),
   },
 };

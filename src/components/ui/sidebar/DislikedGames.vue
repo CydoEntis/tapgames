@@ -1,8 +1,7 @@
 <template>
-  <!-- <the-title title="Liked Games" /> -->
-  <div class="liked-games">
+  <div class="disliked-games">
     <game-display
-      v-for="game in getLikedGames"
+      v-for="game in getDislikedGames"
       :key="game.id"
       :url="game.image"
       :title="game.name"
@@ -12,19 +11,31 @@
 
 <script>
 import { mapGetters } from "vuex";
+import { loadGamesFromStorage } from "../../../helpers/storage";
 import GameDisplay from "../GameDisplay.vue";
 import TheTitle from "../TheTitle.vue";
 
 export default {
   components: { GameDisplay, TheTitle },
+  created() {
+    const dislikedGames = loadGamesFromStorage("dislikedGames");
+
+    this.$store.commit("setDislikedGames", dislikedGames);
+  },
   computed: {
-    ...mapGetters(["getLikedGames"]),
+    ...mapGetters(["getDislikedGames"]),
   },
 };
 </script>
 
 <style lang="scss" scoped>
-.liked-games {
+h2 {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.disliked-games {
   width: 100%;
   padding: 10px;
   display: flex;

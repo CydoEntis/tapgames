@@ -16,7 +16,7 @@ import LoadingSpinner from "../spinners/LoadingSpinner.vue";
 import CardBack from "./card-components/card-back-components/CardBack.vue";
 import CardFront from "./card-components/card-front-components/CardFront.vue";
 
-import { loadLikedGamesFromStorage } from "../../helpers/storage";
+import { loadGamesFromStorage } from "../../helpers/storage";
 
 export default {
   props: ["games"],
@@ -50,20 +50,51 @@ export default {
     ...mapGetters(["getIndex", "getShowImage"]),
   },
   async created() {
-    const likedGames = loadLikedGamesFromStorage();
+    const likedGames = loadGamesFromStorage("likedGames");
+    const dislikedGames = loadGamesFromStorage("dislikedGames");
 
     const apiUrl = "https://api.rawg.io/api/games?key=";
     const apiKey = "4ddf56496a3f4f1fb9d1338eebb64df7";
     const pageNumber = `&page=1`;
     const fullUrl = apiUrl + apiKey + pageNumber;
 
-    await this.fetchGames(fullUrl);
-    if (likedGames === undefined) {
+    console.log(likedGames);
+    console.log(dislikedGames);
+
+    let lastLikedGame;
+    if (likedGames !== undefined && likedGames.length > 0) {
+      lastLikedGame = likedGames.length - 1;
+    }
+
+    let lastDislikedGame;
+    if (dislikedGames !== undefined && dislikedGames.length > 0) {
+      lastDislikedGame = dislikedGames.length - 1;
+    }
+
+    if (likedGames === undefined && dislikedGames === undefined) {
       await this.fetchGames(fullUrl);
-    } else {
-      let lastEntry = likedGames.length - 1;
-      await this.fetchGames(likedGames[lastEntry].currentPage);
-      this.$store.commit("setIndex", likedGames[lastEntry].index + 1);
+    } else if (likedGames !== undefined && dislikedGames === undefined) {
+      await this.fetchGames(likedGames[lastLikedGame].currentPage);
+      this.$store.commit("setIndex", likedGames[lastLikedGame].index + 1);
+    } else if (dislikedGames !== undefined && likedGames === undefined) {
+      await this.fetchGames(dislikedGames[lastDislikedGame].currentPage);
+      this.$store.commit("setIndex", dislikedGames[lastDislikedGame].index + 1);
+    } else if (
+      dislikedGames &&
+      likedGames &&
+      likedGames[lastLikedGame].entryTime >
+        dislikedGames[lastDislikedGame].entryTime
+    ) {
+      await this.fetchGames(likedGames[lastLikedGame].currentPage);
+      this.$store.commit("setIndex", likedGames[lastLikedGame].index + 1);
+    } else if (
+      dislikedGames &&
+      likedGames &&
+      dislikedGames[lastDislikedGame].entryTime >
+        likedGames[lastLikedGame].entryTime
+    ) {
+      await this.fetchGames(dislikedGames[lastDislikedGame].currentPage);
+      this.$store.commit("setIndex", dislikedGames[lastDislikedGame].index + 1);
     }
   },
 };
@@ -94,58 +125,6 @@ export default {
 
   &.is-flipped {
     transform: rotateY(180deg);
-  }
-}
-
-.v-enter-active {
-  animation: fade-in 0.3s ease-out;
-}
-
-.v-leave-active {
-  animation: fade-out 0.3s ease-out;
-}
-
-@keyframes fade-in {
-  0% {
-    opacity: 0;
-  }
-
-  25% {
-    opacity: 0.25;
-  }
-
-  50% {
-    opacity: 0.5;
-  }
-
-  75% {
-    opacity: 0.75;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes fade-out {
-  100% {
-    opacity: 0;
-  }
-
-  75% {
-    opacity: 0.25;
-  }
-
-  50% {
-    opacity: 0.5;
-  }
-
-  25% {
-    opacity: 0.75;
-  }
-
-  0% {
-    opacity: 1;
   }
 }
 </style>

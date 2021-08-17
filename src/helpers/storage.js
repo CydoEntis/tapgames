@@ -1,11 +1,10 @@
-export function saveToLocalStorage(likedGames) {
-	window.localStorage.setItem("likedGames", JSON.stringify(likedGames));
-	console.log("Added to liked games");
+export function saveToLocalStorage(storageName, gameList) {
+	window.localStorage.setItem(storageName, JSON.stringify(gameList));
 }
 
-export function loadLikedGamesFromStorage() {
-	if (localStorage.getItem("likedGames") === null) return;
+export function loadGamesFromStorage(storageName) {
+	if (localStorage.getItem(storageName) === null) return;
 	else {
-		return JSON.parse(localStorage.getItem("likedGames"));
+		return JSON.parse(localStorage.getItem(storageName));
 	}
 }

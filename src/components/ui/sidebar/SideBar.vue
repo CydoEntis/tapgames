@@ -1,25 +1,36 @@
 <template>
   <div class="side-bar">
-    <the-title title="Dredge" />
-    <liked-games />
+    <div class="title-bar">
+      <the-title title="Dredge" />
+    </div>
+    <div class="side-bar-content">
+      <the-nav />
+      <router-view v-slot="slotProps" name="sidebar">
+        <transition mode="out-in">
+          <component :is="slotProps.Component" />
+        </transition>
+      </router-view>
+      <!-- <router-view /> -->
+    </div>
   </div>
 </template>
 
 <script>
-import TheTitle from "../../TheTitle.vue";
+import TheTitle from "../TheTitle.vue";
 import LikedGames from "./LikedGames.vue";
 
-import { loadLikedGamesFromStorage } from "../../../helpers/storage";
+import { loadGamesFromStorage } from "../../../helpers/storage";
 import { mapGetters } from "vuex";
+import TheNav from "../TheNav.vue";
 
 export default {
-  components: { TheTitle, LikedGames },
+  components: { TheTitle, LikedGames, TheNav },
   data() {
     return {};
   },
   methods: {
     async loadLikedGames() {
-      const likedGames = loadLikedGamesFromStorage();
+      const likedGames = loadGamesFromStorage("likedGames");
       await this.$store.commit("setLikedGames", likedGames);
     },
   },
@@ -37,5 +48,16 @@ export default {
   width: 25vw;
   height: 100vh;
   background: #202020;
+
+  .title-bar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.side-bar-content {
+  padding: 5px 10px;
 }
 </style>

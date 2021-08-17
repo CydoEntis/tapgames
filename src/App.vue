@@ -1,10 +1,10 @@
 <template>
-  <!-- <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </div> -->
   <router-view />
 </template>
+
+<script>
+export default {};
+</script>
 
 <style lang="scss">
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap");
@@ -21,19 +21,6 @@ body {
   font-family: "Inter", sans-serif;
   color: #fff;
   background: #151515;
-}
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
 }
 
 .card__face {
@@ -69,5 +56,57 @@ body {
 .no-rating {
   border: 1px solid #ffffff66;
   color: #ffffff66;
+}
+
+.v-enter-active {
+  animation: fade-in 0.3s ease-out;
+}
+
+.v-leave-active {
+  animation: fade-out 0.3s ease-out;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  25% {
+    opacity: 0.25;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  75% {
+    opacity: 0.75;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  100% {
+    opacity: 0;
+  }
+
+  75% {
+    opacity: 0.25;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  25% {
+    opacity: 0.75;
+  }
+
+  0% {
+    opacity: 1;
+  }
 }
 </style>

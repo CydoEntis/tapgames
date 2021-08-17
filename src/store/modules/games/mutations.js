@@ -20,4 +20,10 @@ export default {
 	setLikedGames(state, payload) {
 		state.likedGames = payload;
 	},
+	setDislikedGames(state, payload) {
+		state.dislikedGames = payload;
+	},
+	setLastEntry(state, payload) {
+		state.lastEntry = payload;
+	},
 };

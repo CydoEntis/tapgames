@@ -16,6 +16,7 @@ export default {
 			showImage: true,
 			likedGames: [],
 			dislikedGames: [],
+			lastEntry: "",
 		};
 	},
 	mutations,

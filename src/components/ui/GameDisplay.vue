@@ -16,7 +16,6 @@ export default {
 .img-wrapper {
   position: relative;
   width: 100%;
-  max-width: 300px;
   height: 45px;
   border-radius: 15px;
   overflow: hidden;
