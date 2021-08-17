@@ -1,5 +1,5 @@
 <template>
-  <h1>{{ title }}</h1>
+  <router-link to="/">{{ title }}</router-link>
 </template>
 
 <script>
@@ -9,7 +9,11 @@ export default {
 </script>
 
 <style lange="scss" scoped>
-h1 {
-  padding: 5px 15px;
+a {
+  display: block;
+  padding: 15px;
+  text-decoration: none;
+  color: #fff;
+  font-size: 28px;
 }
 </style>

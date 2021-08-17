@@ -1,11 +1,17 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home.vue";
+import Landing from "../views/Landing.vue";
 import LikedGames from "../components/ui/sidebar/LikedGames.vue";
 import DislikedGames from "../components/ui/sidebar/DislikedGames.vue";
 
 const routes = [
 	{
-		path: "/liked",
+		path: "/",
+		name: "Landing",
+		component: Landing,
+	},
+	{
+		path: "/home",
 		name: "Home",
 		component: Home,
 		children: [
