@@ -16,7 +16,6 @@ export default {};
   width: 80px;
   height: 80px;
   border-radius: 0 0 0 15px;
-  padding: 15px;
   background: #202020;
 
   i {
@@ -33,10 +32,10 @@ export default {};
 
 @media screen and (max-width: 360px) {
   .mobile-nav {
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     border-radius: 0 0 0 15px;
-    padding: 10px;
+    overflow: hidden;
 
     i {
       color: #fff;

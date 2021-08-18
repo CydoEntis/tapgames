@@ -47,8 +47,6 @@ export default {
 
   .navigation {
     display: none;
-    width: 50px;
-    height: 50px;
   }
 
   .mobile-menu {

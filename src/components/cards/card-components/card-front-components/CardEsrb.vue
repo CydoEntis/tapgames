@@ -12,11 +12,17 @@ export default {
   computed: {
     ...mapGetters(["getGameList", "getIndex"]),
     esrbColor() {
-      if (this.getGameList[this.getIndex].rating === "Mature")
+      if (
+        this.getGameList[this.getIndex].rating === "Mature" ||
+        this.getGameList[this.getIndex].rating === "Adults Only"
+      )
         return "red-rating";
       else if (this.getGameList[this.getIndex].rating === "Teen")
         return "yellow-rating";
-      else if (this.getGameList[this.getIndex].rating === "Everyone 10+")
+      else if (
+        this.getGameList[this.getIndex].rating === "Everyone 10+" ||
+        this.getGameList[this.getIndex].rating === "Everyone"
+      )
         return "green-rating";
       else if (this.getGameList[this.getIndex].rating === "N/A") {
         return "no-rating";
