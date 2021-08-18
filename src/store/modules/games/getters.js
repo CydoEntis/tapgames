@@ -21,6 +21,7 @@ export default {
 		return state.likedGames;
 	},
 	getDislikedGames(state) {
+		console.log(state.dislikedGames);
 		return state.dislikedGames;
 	},
 	getLastEntry(state) {

@@ -1,16 +1,16 @@
 <template>
-  <div class="sidebar">
-    <div class="sidebar-header">
+  <div class="mobile">
+    <div class="mobile-header">
       <the-title title="TapGames" />
     </div>
-    <div class="sidebar-controls">
+    <div class="mobile-controls">
       <a @click="showLikes" :class="{ active: likesAreActive }">Likes</a>
       <a @click="showDislikes" :class="{ active: dislikesAreActive }"
         >Dislikes</a
       >
       <!-- </transition> -->
     </div>
-    <div class="sidebar-content">
+    <div class="mobile-content">
       <transition
         mode="out-in"
         enter-active-class="animate__animated animate__faster animate__fadeIn"
@@ -98,18 +98,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.sidebar {
-  width: 25vw;
-  min-width: 360px;
+.mobile {
+  width: 100%;
   height: 100vh;
-  background: #202020;
+  background: #151515;
 
-  .sidebar-header {
+  .mobile-header {
     width: 100%;
   }
 
-  .sidebar-controls {
-    text-align: right;
+  .mobile-controls {
+    text-align: center;
     margin: 10px;
     transition: active 800ms ease-in;
 
@@ -123,11 +122,6 @@ export default {
       cursor: pointer;
       transition: all 200ms ease-in;
 
-      &.router-link-exact-active {
-        color: #fff;
-        border: 1px solid #fff;
-      }
-
       &:hover {
         opacity: 0.6;
       }
@@ -140,12 +134,13 @@ export default {
   }
 }
 
-.sidebar-content {
+.mobile-content {
   padding: 5px 10px;
   overflow: hidden;
 
   .games-container {
     width: 100%;
+    overflow-y: auto;
     overflow-x: hidden;
     font-size: 14px;
     overflow-y: scroll;
@@ -159,12 +154,6 @@ export default {
       background-color: #151515;
       outline: 1px solid #151515;
     }
-  }
-}
-
-@media screen and (max-width: 800px) {
-  .sidebar {
-    display: none;
   }
 }
 </style>

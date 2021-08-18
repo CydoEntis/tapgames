@@ -16,4 +16,10 @@ export default {
 h2 {
   font-size: 28px;
 }
+
+@media screen and (max-width: 450px) {
+  h2 {
+    font-size: 36px;
+  }
+}
 </style>

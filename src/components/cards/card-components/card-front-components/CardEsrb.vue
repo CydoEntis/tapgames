@@ -35,4 +35,20 @@ export default {
     border-radius: 15px;
   }
 }
+
+@media screen and (max-width: 450px) {
+  .game-esrb {
+    span {
+      font-size: 18px;
+    }
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .game-esrb {
+    span {
+      font-size: 14px;
+    }
+  }
+}
 </style>

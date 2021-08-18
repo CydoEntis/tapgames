@@ -70,4 +70,31 @@ export default {};
     }
   }
 }
+
+@media screen and (max-width: 375px) {
+  .landing {
+    width: 100%;
+    height: 100vh;
+    background: url("https://www.wallpapertip.com/wmimgs/80-806806_popular-video-games-collage.jpg");
+    background-size: cover;
+
+    &-content {
+      h1 {
+        font-size: 52px;
+        margin-bottom: 10px;
+      }
+
+      h3 {
+        font-size: 20px;
+        font-weight: 400;
+      }
+
+      a {
+        margin: 25px 0;
+        padding: 6px 12px;
+        font-size: 18px;
+      }
+    }
+  }
+}
 </style>

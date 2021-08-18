@@ -221,4 +221,28 @@ export default {
   border-radius: 15px;
   height: 600px;
 }
+
+@media screen and (max-width: 450px) {
+  .card-info {
+    width: 100%;
+    padding: 8px;
+  }
+
+  .card__face--front {
+    height: 100vh;
+    border-radius: none;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .card-info {
+    width: 100%;
+    padding: 8px;
+  }
+
+  .card__face--front {
+    height: 100vh;
+    border-radius: none;
+  }
+}
 </style>

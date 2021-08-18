@@ -102,11 +102,6 @@ export default {
 
 <style lang="scss" scoped>
 .scene {
-  /* position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center; */
-
   width: 375px;
   height: 600px;
 
@@ -125,6 +120,23 @@ export default {
 
   &.is-flipped {
     transform: rotateY(180deg);
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .scene {
+    width: 100vw;
+    height: 100vh;
+
+    perspective: 1000px;
+  }
+
+  .card {
+    display: block;
+    width: 100vw;
+    height: 100%;
+    box-shadow: none;
+    border-radius: 0;
   }
 }
 </style>

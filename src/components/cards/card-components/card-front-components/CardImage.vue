@@ -24,4 +24,30 @@ export default {
     max-height: 200px;
   }
 }
+
+@media screen and (max-width: 450px) {
+  .img-wrapper {
+    max-width: 100%;
+
+    img {
+      border-radius: 0 0 15px 15px;
+      width: 100%;
+      min-height: 250px;
+      max-height: 250px;
+    }
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .img-wrapper {
+    max-width: 100%;
+
+    img {
+      border-radius: 0 0 15px 15px;
+      width: 100%;
+      min-height: 175px;
+      max-height: 175px;
+    }
+  }
+}
 </style>

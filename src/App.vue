@@ -67,11 +67,11 @@ body {
 }
 
 .v-enter-active {
-  animation: fade-in 0.3s ease-out;
+  animation: fade-in 0.2s ease-out;
 }
 
 .v-leave-active {
-  animation: fade-out 0.3s ease-out;
+  animation: fade-out 0.2s ease-out;
 }
 
 @keyframes fade-in {

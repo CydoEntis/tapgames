@@ -41,4 +41,17 @@ export default {
     color: #ffffff66;
   }
 }
+
+@media screen and (max-width: 450px) {
+  .card-info {
+    width: 100%;
+    min-height: 450px;
+    padding: 8px;
+  }
+
+  .card__face--back {
+    height: 100vh;
+    border-radius: none;
+  }
+}
 </style>

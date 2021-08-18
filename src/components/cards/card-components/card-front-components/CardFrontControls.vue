@@ -69,4 +69,50 @@ export default {
     color: #c85849;
   }
 }
+
+@media screen and (max-width: 450px) {
+  .controls {
+    position: absolute;
+    bottom: 0;
+
+    .reaction-btn {
+      width: 85px;
+      height: 75px;
+      font-size: 42px;
+    }
+    .info {
+      width: 175px;
+    }
+    .like {
+      border-radius: 15px 0 0 0;
+    }
+
+    .dislike {
+      border-radius: 0 15px 0 0;
+    }
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .controls {
+    position: absolute;
+    bottom: 0;
+
+    .reaction-btn {
+      width: 65px;
+      height: 55px;
+      font-size: 32px;
+    }
+    .info {
+      width: 125px;
+    }
+    .like {
+      border-radius: 15px 0 0 0;
+    }
+
+    .dislike {
+      border-radius: 0 15px 0 0;
+    }
+  }
+}
 </style>

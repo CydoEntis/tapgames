@@ -1,8 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home.vue";
 import Landing from "../views/Landing.vue";
-import LikedGames from "../components/ui/sidebar/LikedGames.vue";
-import DislikedGames from "../components/ui/sidebar/DislikedGames.vue";
 
 const routes = [
 	{
@@ -14,22 +12,6 @@ const routes = [
 		path: "/home",
 		name: "Home",
 		component: Home,
-		children: [
-			{
-				path: "/liked",
-				name: "LikedGames",
-				components: {
-					sidebar: LikedGames,
-				},
-			},
-			{
-				path: "/disliked",
-				name: "DislikedGames",
-				components: {
-					sidebar: DislikedGames,
-				},
-			},
-		],
 	},
 ];
 

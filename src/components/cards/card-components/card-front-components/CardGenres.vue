@@ -50,4 +50,20 @@ export default {
     margin-bottom: 5px;
   }
 }
+
+@media screen and (max-width: 450px) {
+  .game-genres {
+    span {
+      font-size: 18px;
+    }
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .game-genres {
+    span {
+      font-size: 14px;
+    }
+  }
+}
 </style>

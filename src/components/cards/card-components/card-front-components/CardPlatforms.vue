@@ -40,4 +40,25 @@ export default {
     margin-right: 10px;
   }
 }
+
+@media screen and (max-width: 450px) {
+  .game-platforms {
+    height: 60px;
+
+    span {
+      font-size: 22px;
+      margin-right: 15px;
+    }
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .game-platforms {
+    height: 40px;
+
+    span {
+      font-size: 18px;
+    }
+  }
+}
 </style>

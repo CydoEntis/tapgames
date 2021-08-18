@@ -39,4 +39,11 @@ export default {
     }
   }
 }
+
+@media screen and (max-width: 450px) {
+  .reaction-btn {
+    width: 75px;
+    height: 65px;
+  }
+}
 </style>

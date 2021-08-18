@@ -19,7 +19,7 @@ export default {
   height: 45px;
   border-radius: 15px;
   overflow: hidden;
-  margin: 5px;
+  margin: 5px 0;
   cursor: pointer;
 
   &:hover {
