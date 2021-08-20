@@ -26,4 +26,8 @@ export default {
 	setLastEntry(state, payload) {
 		state.lastEntry = payload;
 	},
+	setIsFlipDisabled(state, payload) {
+		state.isFlipDisabled = payload;
+		console.log(state.isFlipDisabled);
+	},
 };

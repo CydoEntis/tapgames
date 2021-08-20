@@ -17,6 +17,7 @@ export default {
 			likedGames: [],
 			dislikedGames: [],
 			lastEntry: "",
+			isFlipDisabled: false,
 		};
 	},
 	mutations,

@@ -157,6 +157,9 @@ export default {
     async getNextGame() {
       this.$store.commit("setShowImage", false);
 
+      // Reset the flipping animation so you can flip the card on a new card.
+      this.$store.commit("setIsFlipDisabled", false);
+
       this.$store.dispatch("incrementIndex");
 
       if (this.getIndex >= this.getGameList.length) {
@@ -182,19 +185,30 @@ export default {
     },
 
     async flipCard() {
-      await this.fetchGameInfo();
+      // Flip the card as long as the animation is reset.
+      if (!this.getIsFlipDisabled) {
+        this.$store.commit("setIsFlipDisabled", true);
 
-      const card = document.querySelector(".card");
-      card.classList.toggle("is-flipped");
+        const card = document.querySelector(".card");
+        card.classList.toggle("is-flipped");
 
-      const dislikeBtn = document.querySelector(".dislike");
-      const likeBtn = document.querySelector(".like");
+        await this.fetchGameInfo();
 
-      dislikeBtn.disabled = true;
-      likeBtn.disabled = true;
+        // Make sure the description is always scrolled to the top when flipped
+        const gameDescription = document.querySelector(".game-description");
+        gameDescription.scrollTop = 0;
 
-      const gameDescription = document.querySelector(".game-description");
-      gameDescription.scrollTop = 0;
+        const infoBtn = document.querySelector(".info");
+
+        // If the card animation is being played disable the button then wait a second before resetting.
+        if (this.getIsFlipDisabled) {
+          infoBtn.disabled = true;
+          setTimeout(() => {
+            infoBtn.disabled = false;
+            this.$store.commit("setIsFlipDisabled", false);
+          }, 1000);
+        }
+      }
     },
   },
   computed: {
@@ -205,6 +219,7 @@ export default {
       "getCurrentGame",
       "getLikedGames",
       "getDislikedGames",
+      "getIsFlipDisabled",
     ]),
   },
 };

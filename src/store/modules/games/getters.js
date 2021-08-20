@@ -27,4 +27,8 @@ export default {
 	getLastEntry(state) {
 		return state.lastEntry;
 	},
+	getIsFlipDisabled(state) {
+		console.log(state.isFlipDisabled);
+		return state.isFlipDisabled;
+	},
 };
