@@ -1,14 +1,14 @@
 <template>
   <div class="controls">
-    <div class="reaction-btn dislike" @click="dislikeGame">
+    <button class="reaction-btn dislike" @click="dislikeGame">
       <i class="fas fa-heart-broken"></i>
-    </div>
-    <div class="reaction-btn info" @click="flipCard">
+    </button>
+    <button class="reaction-btn info" @click="flipCard">
       <i class="fas fa-info-circle"></i>
-    </div>
-    <div class="reaction-btn like" @click="likeGame">
+    </button>
+    <button class="reaction-btn like" @click="likeGame">
       <i class="fas fa-heart"></i>
-    </div>
+    </button>
   </div>
 </template>
 
@@ -36,6 +36,8 @@ export default {
   width: 100%;
 
   .reaction-btn {
+    outline: none;
+    border: none;
     display: flex;
     justify-content: center;
     align-items: center;

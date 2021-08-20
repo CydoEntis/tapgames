@@ -66,15 +66,15 @@ body {
   color: #ffffff66;
 }
 
-.v-enter-active {
+/* .v-enter-active {
   animation: fade-in 0.2s ease-out;
 }
 
 .v-leave-active {
   animation: fade-out 0.2s ease-out;
-}
+} */
 
-@keyframes fade-in {
+/* @keyframes fade-in {
   0% {
     opacity: 0;
   }
@@ -116,5 +116,5 @@ body {
   0% {
     opacity: 1;
   }
-}
+} */
 </style>

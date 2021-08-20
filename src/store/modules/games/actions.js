@@ -57,5 +57,4 @@ export default {
 	incrementIndex({ context, state }) {
 		state.index++;
 	},
-	addToLikedGames(context, gameInfo) {},
 };

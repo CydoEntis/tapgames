@@ -1,5 +1,9 @@
 <template>
-  <transition>
+  <transition
+    mode="out-in"
+    enter-active-class="animate__animated animate__faster animate__fadeIn"
+    leave-active-class="animate__animated animate__faster animate__fadeOut"
+  >
     <div class="scene" v-if="getShowImage">
       <loading-spinner v-if="isLoading" />
       <div v-else class="card">

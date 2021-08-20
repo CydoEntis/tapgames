@@ -86,7 +86,11 @@ export default {
         return false;
       }
     },
+
     async likeGame() {
+      const likeBtn = document.querySelector(".like");
+      likeBtn.disabled = true;
+
       await this.fetchGameInfo();
 
       const likedGames = this.checkStorageForGames(this.getLikedGames);
@@ -112,14 +116,13 @@ export default {
 
         this.$store.commit("setLastEntry", "like");
 
-        this.getNextGame();
+        await this.getNextGame();
       }
     },
     async dislikeGame() {
       await this.fetchGameInfo();
 
       const dislikedGames = this.checkStorageForGames(this.getDislikedGames);
-      console.log(typeof dislikedGames);
 
       let gameInfo = {
         entryTime: Date.now(),
@@ -163,7 +166,7 @@ export default {
 
       setTimeout(() => {
         this.$store.commit("setShowImage", true);
-      }, 1000);
+      }, 500);
     },
     async fetchGameInfo() {
       let id = this.getGameList[this.getIndex].id;
