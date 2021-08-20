@@ -187,6 +187,12 @@ export default {
       const card = document.querySelector(".card");
       card.classList.toggle("is-flipped");
 
+      const dislikeBtn = document.querySelector(".dislike");
+      const likeBtn = document.querySelector(".like");
+
+      dislikeBtn.disabled = true;
+      likeBtn.disabled = true;
+
       const gameDescription = document.querySelector(".game-description");
       gameDescription.scrollTop = 0;
     },
