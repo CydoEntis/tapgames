@@ -120,6 +120,9 @@ export default {
       }
     },
     async dislikeGame() {
+      const dislikeBtn = document.querySelector(".dislike");
+      dislikeBtn.disabled = true;
+
       await this.fetchGameInfo();
 
       const dislikedGames = this.checkStorageForGames(this.getDislikedGames);

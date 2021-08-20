@@ -4,6 +4,7 @@
       v-for="store in getGameList[getIndex].stores"
       :key="store.id"
       :href="'https://' + store.store.domain"
+      target="_blank"
     >
       {{ store.store.name }}
     </a>
