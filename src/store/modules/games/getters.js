@@ -28,7 +28,12 @@ export default {
 		return state.lastEntry;
 	},
 	getIsFlipDisabled(state) {
-		console.log(state.isFlipDisabled);
 		return state.isFlipDisabled;
+	},
+	getDisableLikeBtn(state) {
+		return state.disableLikeBtn;
+	},
+	getDisableDislikeBtn(state) {
+		return state.disableDislikeBtn;
 	},
 };

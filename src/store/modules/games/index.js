@@ -18,6 +18,8 @@ export default {
 			dislikedGames: [],
 			lastEntry: "",
 			isFlipDisabled: false,
+			disableLikeBtn: false,
+			disableDislikeBtn: false,
 		};
 	},
 	mutations,

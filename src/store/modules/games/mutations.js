@@ -28,6 +28,11 @@ export default {
 	},
 	setIsFlipDisabled(state, payload) {
 		state.isFlipDisabled = payload;
-		console.log(state.isFlipDisabled);
+	},
+	setDisableLikeBtn(state, payload) {
+		state.disableLikeBtn = payload;
+	},
+	setDisableDislikeBtn(state, payload) {
+		state.disableDislikeBtn = payload;
 	},
 };
