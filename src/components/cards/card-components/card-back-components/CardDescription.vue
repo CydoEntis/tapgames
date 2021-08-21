@@ -21,6 +21,9 @@ export default {
   height: 300px;
   overflow-y: scroll;
 
+  scrollbar-width: 1em;
+  scrollbar-color: #151515 #202020;
+
   &::-webkit-scrollbar {
     width: 1em;
   }

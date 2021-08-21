@@ -34,10 +34,14 @@ body {
 .card__face {
   position: absolute;
   width: 100%;
+  background: #202020;
+
+  border-radius: 15px;
 
   height: 100%;
-  -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
 }
 
 .game-ratings {
@@ -65,56 +69,4 @@ body {
   border: 1px solid #ffffff66;
   color: #ffffff66;
 }
-
-/* .v-enter-active {
-  animation: fade-in 0.2s ease-out;
-}
-
-.v-leave-active {
-  animation: fade-out 0.2s ease-out;
-} */
-
-/* @keyframes fade-in {
-  0% {
-    opacity: 0;
-  }
-
-  25% {
-    opacity: 0.25;
-  }
-
-  50% {
-    opacity: 0.5;
-  }
-
-  75% {
-    opacity: 0.75;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes fade-out {
-  100% {
-    opacity: 0;
-  }
-
-  75% {
-    opacity: 0.25;
-  }
-
-  50% {
-    opacity: 0.5;
-  }
-
-  25% {
-    opacity: 0.75;
-  }
-
-  0% {
-    opacity: 1;
-  }
-} */
 </style>
