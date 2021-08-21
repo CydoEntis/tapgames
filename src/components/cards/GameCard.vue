@@ -54,6 +54,7 @@ export default {
     ...mapGetters(["getIndex", "getShowImage"]),
   },
   async created() {
+    // TODO: CLEAN UP CODE!!! SPLIT INTO SMALL FUNCTIONS
     const likedGames = loadGamesFromStorage("likedGames");
     const dislikedGames = loadGamesFromStorage("dislikedGames");
 
@@ -61,9 +62,6 @@ export default {
     const apiKey = "4ddf56496a3f4f1fb9d1338eebb64df7";
     const pageNumber = `&page=1`;
     const fullUrl = apiUrl + apiKey + pageNumber;
-
-    console.log(likedGames);
-    console.log(dislikedGames);
 
     let lastLikedGame;
     if (likedGames !== undefined && likedGames.length > 0) {

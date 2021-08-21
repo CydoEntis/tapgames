@@ -45,19 +45,40 @@ export default {
         return false;
       }
     },
-
-    async likeGame() {
-      if (!this.getDisableLikeBtn || !this.getDisableDislikeBtn) {
-        this.$store.commit("setDisableLikeBtn", true);
-        this.$store.commit("setDisableDislikeBtn", true);
-
+    checkIfButtonsAreEnabled() {
+      if (!this.getDisableLikeBtn || !this.getDisableDislikeBtn) return true;
+    },
+    checkIfButtonsAreDisabled() {
+      if (this.getDisableLikeBtn || this.getDisableDislikeBtn) return true;
+    },
+    setLikeAndDislikeButtons(likeBtn, dislikeBtn) {
+      this.$store.commit("setDisableLikeBtn", likeBtn);
+      this.$store.commit("setDisableDislikeBtn", dislikeBtn);
+    },
+    resetButtons() {
+      setTimeout(() => {
         const dislikeBtn = document.querySelector(".dislike");
         const likeBtn = document.querySelector(".like");
-        dislikeBtn.disabled = true;
-        likeBtn.disabled = true;
 
+        dislikeBtn.disabled = false;
+        likeBtn.disabled = false;
+        this.$store.commit("setDisableLikeBtn", false);
+        this.$store.commit("setDisableDislikeBtn", false);
+      }, 500);
+    },
+    async likeGame() {
+      // If the buttons are enabled then we want to disable them.
+      if (this.checkIfButtonsAreEnabled()) {
+        // Set buttons gobal state to disabled
+        this.setLikeAndDislikeButtons(true, true);
+
+        // Disable the UI buttons
+        this.toggleBtns(true, true);
+
+        // Fetch the current games info.
         await this.fetchGameInfo();
 
+        // Get liked games from storage if the exist
         const likedGames = this.checkStorageForGames(this.getLikedGames);
 
         let gameInfo = {
@@ -69,10 +90,13 @@ export default {
           publishers: this.getCurrentGame.publishers,
         };
 
+        // Check to see if the game we pulled is already within our storage.
         let gameExists = this.checkIfGameIsInLocalStorage(likedGames, gameInfo);
 
+        // If the game exists within storage ignore it and grab next game
         if (gameExists) this.getNextGame();
         else {
+          // Otherwise add the game to the game list and save the list to storage then fetch our next game.
           likedGames.push(gameInfo);
 
           this.$store.commit("setLikedGames", likedGames);
@@ -84,30 +108,28 @@ export default {
           await this.getNextGame();
         }
 
-        if (this.getDisableLikeBtn || this.getDisableDislikeBtn) {
-          setTimeout(() => {
-            dislikeBtn.disabled = false;
-            likeBtn.disabled = false;
-            this.$store.commit("setDisableLikeBtn", false);
-            this.$store.commit("setDisableDislikeBtn", false);
-          }, 500);
+        // If the buttons are disabled then reset them.
+        if (this.checkIfButtonsAreDisabled()) {
+          this.resetButtons();
         }
       }
     },
     async dislikeGame() {
-      if (!this.getDisableLikeBtn || !this.getDisableDislikeBtn) {
-        this.$store.commit("setDisableLikeBtn", true);
-        this.$store.commit("setDisableDislikeBtn", true);
+      // If the buttons are enabled then we want to disable them.
+      if (this.checkIfButtonsAreEnabled()) {
+        // Set buttons gobal state to disabled
+        this.setLikeAndDislikeButtons(true, true);
 
-        const dislikeBtn = document.querySelector(".dislike");
-        const likeBtn = document.querySelector(".like");
-        dislikeBtn.disabled = true;
-        likeBtn.disabled = true;
+        // Disable the UI buttons
+        this.toggleBtns(true, true);
 
+        // Fetch the current games info.
         await this.fetchGameInfo();
 
+        // Get disliked games from storage if the exist
         const dislikedGames = this.checkStorageForGames(this.getDislikedGames);
 
+        // Pull the game info we wish to save
         let gameInfo = {
           entryTime: Date.now(),
           index: this.getIndex,
@@ -117,13 +139,16 @@ export default {
           publishers: this.getCurrentGame.publishers,
         };
 
+        // Check to see if the game we pulled is already within our storage.
         let gameExists = this.checkIfGameIsInLocalStorage(
           dislikedGames,
           gameInfo
         );
 
+        // If the game exists within storage ignore it and grab next game
         if (gameExists) this.getNextGame();
         else {
+          // Otherwise add the game to the game list and save the list to storage then fetch our next game.
           dislikedGames.push(gameInfo);
 
           this.$store.commit("setDislikedGames", dislikedGames);
@@ -135,38 +160,45 @@ export default {
           this.getNextGame();
         }
 
-        if (this.getDisableLikeBtn || this.getDisableDislikeBtn) {
-          setTimeout(() => {
-            dislikeBtn.disabled = false;
-            likeBtn.disabled = false;
-            this.$store.commit("setDisableLikeBtn", false);
-            this.$store.commit("setDisableDislikeBtn", false);
-          }, 500);
+        // If the buttons are disabled then reset them.
+        if (this.checkIfButtonsAreDisabled()) {
+          this.resetButtons();
         }
       }
     },
-    async getNextGame() {
-      this.$store.commit("setShowImage", false);
-
+    toggleImage(show) {
+      this.$store.commit("setShowImage", show);
+    },
+    toggleBtns(disableLikeBtn, disableDislikeBtn) {
       const dislikeBtn = document.querySelector(".dislike");
-      dislikeBtn.disabled = true;
+      dislikeBtn.disabled = disableLikeBtn;
 
       const likeBtn = document.querySelector(".like");
-      likeBtn.disabled = true;
+      likeBtn.disabled = disableDislikeBtn;
+    },
+    toggleFlipStatus(isFlipped) {
+      this.$store.commit("setIsFlipDisabled", isFlipped);
+    },
+    async getNextGame() {
+      // this.$store.commit("setShowImage", false);
+      this.toggleImage(false);
+
+      this.toggleBtns(true, true);
 
       // Reset the flipping animation so you can flip the card on a new card.
-      this.$store.commit("setIsFlipDisabled", false);
+      this.toggleFlipStatus(false);
 
       this.$store.dispatch("incrementIndex");
 
+      // Reset the index to 0 if we exceed the game list's length then load the next page.
       if (this.getIndex >= this.getGameList.length) {
         this.$store.commit("setIndex", 0);
-        console.log("Reset Index: ", this.getIndex);
 
         const nextPageUrl = this.getNextPage;
         await this.fetchGames(nextPageUrl);
       }
 
+      // Control the duration of the flip animation
       setTimeout(() => {
         this.$store.commit("setShowImage", true);
       }, 500);
