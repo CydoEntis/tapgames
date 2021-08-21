@@ -110,7 +110,6 @@ export default {
     ...mapGetters(["getIndex", "getShowImage"]),
   },
   async created() {
-    // TODO: CLEAN UP CODE!!! SPLIT INTO SMALL FUNCTIONS
     const likedGames = loadGamesFromStorage("likedGames");
     const dislikedGames = loadGamesFromStorage("dislikedGames");
 

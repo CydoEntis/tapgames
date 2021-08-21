@@ -1,18 +1,30 @@
 <template>
-  <div class="img-wrapper">
-    <h3>{{ title }}</h3>
-    <img :src="url" alt="" />
-    <div id="overlay"></div>
-  </div>
+  <router-link :to="gameLink">
+    <div class="img-wrapper">
+      <h3>{{ title }}</h3>
+      <img :src="url" alt="" />
+      <div id="overlay"></div>
+    </div>
+  </router-link>
 </template>
 
 <script>
 export default {
-  props: ["url", "title"],
+  props: ["url", "title", "id"],
+  computed: {
+    gameLink() {
+      return "/games/" + this.id;
+    },
+  },
 };
 </script>
 
 <style lang="scss" scoped>
+a {
+  text-decoration: none;
+  color: #fff;
+}
+
 .img-wrapper {
   position: relative;
   width: 100%;
