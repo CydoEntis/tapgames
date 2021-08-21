@@ -49,6 +49,62 @@ export default {
     increment() {
       this.$store.dispatch("incrementIndex");
     },
+    checkForLastGame(likedGames, dislikedGames) {
+      let lastLikedGame;
+      if (likedGames !== undefined && likedGames.length > 0) {
+        lastLikedGame = likedGames.length - 1;
+      }
+
+      let lastDislikedGame;
+      if (dislikedGames !== undefined && dislikedGames.length > 0) {
+        lastDislikedGame = dislikedGames.length - 1;
+      }
+
+      return { lastLikedGame, lastDislikedGame };
+    },
+    async checkWhichGameToFetch(likedGames, dislikedGames, fullUrl, lastGame) {
+      if (likedGames === undefined && dislikedGames === undefined) {
+        await this.fetchGames(fullUrl);
+      } else if (likedGames !== undefined && dislikedGames === undefined) {
+        await this.fetchGames(likedGames[lastGame.lastLikedGame].currentPage);
+        this.$store.commit(
+          "setIndex",
+          likedGames[lastGame.lastLikedGame].index + 1
+        );
+      } else if (dislikedGames !== undefined && likedGames === undefined) {
+        await this.fetchGames(
+          dislikedGames[lastGame.lastDislikedGame].currentPage
+        );
+        this.$store.commit(
+          "setIndex",
+          dislikedGames[lastGame.lastDislikedGame].index + 1
+        );
+      } else if (
+        dislikedGames &&
+        likedGames &&
+        likedGames[lastGame.lastLikedGame].entryTime >
+          dislikedGames[lastGame.lastDislikedGame].entryTime
+      ) {
+        await this.fetchGames(likedGames[lastGame.lastLikedGame].currentPage);
+        this.$store.commit(
+          "setIndex",
+          likedGames[lastGame.lastLikedGame].index + 1
+        );
+      } else if (
+        dislikedGames &&
+        likedGames &&
+        dislikedGames[lastGame.lastDislikedGame].entryTime >
+          likedGames[lastGame.lastLikedGame].entryTime
+      ) {
+        await this.fetchGames(
+          dislikedGames[lastGame.lastDislikedGame].currentPage
+        );
+        this.$store.commit(
+          "setIndex",
+          dislikedGames[lastGame.lastDislikedGame].index + 1
+        );
+      }
+    },
   },
   computed: {
     ...mapGetters(["getIndex", "getShowImage"]),
@@ -63,41 +119,14 @@ export default {
     const pageNumber = `&page=1`;
     const fullUrl = apiUrl + apiKey + pageNumber;
 
-    let lastLikedGame;
-    if (likedGames !== undefined && likedGames.length > 0) {
-      lastLikedGame = likedGames.length - 1;
-    }
+    const lastGame = this.checkForLastGame(likedGames, dislikedGames);
 
-    let lastDislikedGame;
-    if (dislikedGames !== undefined && dislikedGames.length > 0) {
-      lastDislikedGame = dislikedGames.length - 1;
-    }
-
-    if (likedGames === undefined && dislikedGames === undefined) {
-      await this.fetchGames(fullUrl);
-    } else if (likedGames !== undefined && dislikedGames === undefined) {
-      await this.fetchGames(likedGames[lastLikedGame].currentPage);
-      this.$store.commit("setIndex", likedGames[lastLikedGame].index + 1);
-    } else if (dislikedGames !== undefined && likedGames === undefined) {
-      await this.fetchGames(dislikedGames[lastDislikedGame].currentPage);
-      this.$store.commit("setIndex", dislikedGames[lastDislikedGame].index + 1);
-    } else if (
-      dislikedGames &&
-      likedGames &&
-      likedGames[lastLikedGame].entryTime >
-        dislikedGames[lastDislikedGame].entryTime
-    ) {
-      await this.fetchGames(likedGames[lastLikedGame].currentPage);
-      this.$store.commit("setIndex", likedGames[lastLikedGame].index + 1);
-    } else if (
-      dislikedGames &&
-      likedGames &&
-      dislikedGames[lastDislikedGame].entryTime >
-        likedGames[lastLikedGame].entryTime
-    ) {
-      await this.fetchGames(dislikedGames[lastDislikedGame].currentPage);
-      this.$store.commit("setIndex", dislikedGames[lastDislikedGame].index + 1);
-    }
+    await this.checkWhichGameToFetch(
+      likedGames,
+      dislikedGames,
+      fullUrl,
+      lastGame
+    );
   },
 };
 </script>
