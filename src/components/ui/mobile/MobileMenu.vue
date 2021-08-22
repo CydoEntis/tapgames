@@ -23,6 +23,7 @@
               :key="game.id"
               :url="game.image"
               :title="game.name"
+              :id="game.id"
             />
           </transition-group>
         </div>
@@ -34,6 +35,7 @@
               :key="game.id"
               :url="game.image"
               :title="game.name"
+              :id="game.id"
             />
           </transition-group>
         </div>

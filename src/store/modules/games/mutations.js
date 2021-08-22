@@ -35,4 +35,10 @@ export default {
 	setDisableDislikeBtn(state, payload) {
 		state.disableDislikeBtn = payload;
 	},
+	setGameContentVisibility(state, payload) {
+		state.gameContentVisibility = payload;
+	},
+	setIsMobileNavOpen(state, payload) {
+		state.isMobileNavOpen = payload;
+	},
 };

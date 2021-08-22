@@ -20,6 +20,8 @@ export default {
 			isFlipDisabled: false,
 			disableLikeBtn: false,
 			disableDislikeBtn: false,
+			gameContentVisibility: null,
+			isMobileNavOpen: false,
 		};
 	},
 	mutations,

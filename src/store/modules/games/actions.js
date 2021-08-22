@@ -44,12 +44,28 @@ export default {
 		const res = await fetch(apiUrl + apiKey);
 		const data = await res.json();
 
+		let esrb;
+
+		if (data.esrb_rating !== null) {
+			esrb = data.esrb_rating.name;
+		} else esrb = "N/A";
+
 		let currentGame = {
 			id: data.id,
 			name: data.name,
+			image: data.background_image,
 			description: data.description_raw,
+			metacritic: data.metacritic,
+			platforms: assignPlatforms(data.platforms),
+			rating: esrb,
 			publishers: data.publishers,
+			website: data.website,
+			stores: data.stores,
+			genres: data.genres,
+			playtime: data.playtime,
 		};
+
+		console.log(currentGame);
 
 		context.commit("setCurrentGame", currentGame);
 	},

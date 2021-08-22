@@ -1,7 +1,7 @@
 <template>
   <section class="main">
     <div class="navigation">
-      <mobile-nav @click="navIsOpen = !navIsOpen" />
+      <mobile-nav @click="toggleMobileNav" />
     </div>
     <div class="main-content">
       <transition
@@ -9,7 +9,7 @@
         enter-active-class="animate__animated animate__faster animate__fadeIn"
         leave-active-class="animate__animated animate__faster animate__fadeOut"
       >
-        <div class="mobile-menu" v-if="navIsOpen">
+        <div class="mobile-menu" v-if="getIsMobileNavOpen">
           <mobile-menu />
         </div>
         <game-card v-else />
@@ -19,6 +19,7 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import GameCard from "../../cards/GameCard.vue";
 import MobileMenu from "../mobile/MobileMenu.vue";
 import MobileNav from "../mobile/MobileNav.vue";
@@ -30,7 +31,12 @@ export default {
     };
   },
   methods: {
-    toggleNav() {},
+    toggleMobileNav() {
+      this.$store.commit("setIsMobileNavOpen", !this.getIsMobileNavOpen);
+    },
+  },
+  computed: {
+    ...mapGetters(["getIsMobileNavOpen"]),
   },
 };
 </script>

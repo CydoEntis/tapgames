@@ -35,4 +35,10 @@ export default {
 	getDisableDislikeBtn(state) {
 		return state.disableDislikeBtn;
 	},
+	getGameContentVisibility(state) {
+		return state.gameContentVisibility;
+	},
+	getIsMobileNavOpen(state) {
+		return state.isMobileNavOpen;
+	},
 };

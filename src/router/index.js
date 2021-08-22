@@ -15,9 +15,10 @@ const routes = [
 		component: Home,
 	},
 	{
-		path: "/games/:id",
+		path: "/games/:gameId",
 		name: "GamePage",
 		component: GamePage,
+		props: true,
 	},
 ];
 

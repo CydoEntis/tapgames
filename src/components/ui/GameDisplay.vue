@@ -1,5 +1,5 @@
 <template>
-  <router-link :to="gameLink">
+  <router-link :to="gameLink" @click="fetchGameInfo">
     <div class="img-wrapper">
       <h3>{{ title }}</h3>
       <img :src="url" alt="" />
@@ -14,6 +14,21 @@ export default {
   computed: {
     gameLink() {
       return "/games/" + this.id;
+    },
+  },
+  methods: {
+    async fetchGameInfo() {
+      this.$store.commit("setGameContentVisibility", false);
+      this.$store.commit("setIsMobileNavOpen", false);
+      try {
+        await this.$store.dispatch("fetchGameInfo", this.id);
+
+        setTimeout(() => {
+          this.$store.commit("setGameContentVisibility", true);
+        }, 500);
+      } catch (e) {
+        this.error = e.message || "Unable to fetch games";
+      }
     },
   },
 };
