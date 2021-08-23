@@ -6,14 +6,7 @@
       enter-active-class="animate__animated animate__faster animate__fadeIn"
       leave-active-class="animate__animated animate__faster animate__fadeOut"
     >
-      <game-content
-        :title="getCurrentGame.name"
-        :image="getCurrentGame.image"
-        :platforms="getCurrentGame.platforms"
-        :stores="getCurrentGame.stores"
-        :rating="getCurrentGame.metacritic"
-        :esrb="getCurrentGame.esrb"
-      />
+      <game-content :gameInfo="getCurrentGame" />
     </transition>
   </div>
 </template>

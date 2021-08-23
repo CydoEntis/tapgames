@@ -1,5 +1,3 @@
-// ! FIX cannot read property of null
-
 <template>
   <div class="game-esrb">
     <span :class="esrbColor">{{ getGameList[getIndex].rating }}</span>

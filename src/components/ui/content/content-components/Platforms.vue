@@ -29,11 +29,9 @@ export default {
 
 <style scoped lang="scss">
 .game-platforms {
-  height: 40px;
-
   span {
-    font-size: 18px;
-    margin-right: 10px;
+    font-size: 28px;
+    margin-right: 25px;
   }
 }
 
