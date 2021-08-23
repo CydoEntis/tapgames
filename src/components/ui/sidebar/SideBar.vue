@@ -3,12 +3,17 @@
     <div class="sidebar-header">
       <the-title title="TapGames" />
     </div>
+
     <div class="sidebar-controls">
-      <a @click="showLikes" :class="{ active: likesAreActive }">Likes</a>
-      <a @click="showDislikes" :class="{ active: dislikesAreActive }"
-        >Dislikes</a
-      >
-      <!-- </transition> -->
+      <div class="main-controls">
+        <router-link to="/home">Home</router-link>
+      </div>
+      <div class="category-controls">
+        <a @click="showLikes" :class="{ active: likesAreActive }">Likes</a>
+        <a @click="showDislikes" :class="{ active: dislikesAreActive }"
+          >Dislikes</a
+        >
+      </div>
     </div>
     <div class="sidebar-content">
       <transition
@@ -111,9 +116,9 @@ export default {
   }
 
   .sidebar-controls {
-    text-align: right;
-    margin: 10px;
+    display: flex;
     transition: active 800ms ease-in;
+    margin: 10px;
 
     a {
       text-decoration: none;
@@ -125,14 +130,16 @@ export default {
       cursor: pointer;
       transition: all 200ms ease-in;
 
-      &.router-link-exact-active {
-        color: #fff;
-        border: 1px solid #fff;
-      }
-
       &:hover {
         opacity: 0.6;
       }
+    }
+    .main-controls {
+      width: 50%;
+    }
+    .category-controls {
+      width: 50%;
+      text-align: right;
     }
 
     .active {
