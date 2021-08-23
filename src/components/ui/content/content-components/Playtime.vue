@@ -27,4 +27,16 @@ export default {
     font-size: 16px;
   }
 }
+
+@media screen and (max-width: 768px) and (max-height: 1024px) {
+  .game-playtime {
+    font-size: 24px;
+  }
+}
+
+@media screen and (max-width: 540px) and (max-height: 720px) {
+  .game-playtime {
+    font-size: 18px;
+  }
+}
 </style>

@@ -55,4 +55,20 @@ export default {
     }
   }
 }
+
+@media screen and (max-width: 768px) and (max-height: 1024px) {
+  .game-platforms {
+    span {
+      font-size: 38px;
+    }
+  }
+}
+
+@media screen and (max-width: 540px) and (max-height: 720px) {
+  .game-platforms {
+    span {
+      font-size: 22px;
+    }
+  }
+}
 </style>

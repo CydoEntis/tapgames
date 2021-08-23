@@ -44,7 +44,7 @@ export default {
 @media screen and (max-width: 450px) {
   .game-stores {
     a {
-      font-size: 18px;
+      font-size: 16px;
       padding: 5px 10px;
       margin-right: 6px;
       margin-bottom: 6px;
@@ -56,6 +56,28 @@ export default {
   .game-stores {
     a {
       font-size: 14px;
+      padding: 3px 6px;
+      margin-right: 5px;
+      margin-bottom: 5px;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) and (max-height: 1024px) {
+  .game-stores {
+    a {
+      font-size: 22px;
+      padding: 3px 6px;
+      margin-right: 5px;
+      margin-bottom: 5px;
+    }
+  }
+}
+
+@media screen and (max-width: 540px) and (max-height: 720px) {
+  .game-stores {
+    a {
+      font-size: 18px;
       padding: 3px 6px;
       margin-right: 5px;
       margin-bottom: 5px;

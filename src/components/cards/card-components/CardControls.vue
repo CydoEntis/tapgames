@@ -88,6 +88,7 @@ export default {
           ...this.getGameList[this.getIndex],
           description: this.getCurrentGame.description,
           publishers: this.getCurrentGame.publishers,
+          type: "liked",
         };
 
         // Check to see if the game we pulled is already within our storage.
@@ -137,6 +138,7 @@ export default {
           ...this.getGameList[this.getIndex],
           description: this.getCurrentGame.description,
           publishers: this.getCurrentGame.publishers,
+          type: "disliked",
         };
 
         // Check to see if the game we pulled is already within our storage.

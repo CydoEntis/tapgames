@@ -51,4 +51,20 @@ export default {
     }
   }
 }
+
+@media screen and (max-width: 768px) and (max-height: 1024px) {
+  .game-genres {
+    span {
+      font-size: 22px;
+    }
+  }
+}
+
+@media screen and (max-width: 540px) and (max-height: 720px) {
+  .game-genres {
+    span {
+      font-size: 16px;
+    }
+  }
+}
 </style>

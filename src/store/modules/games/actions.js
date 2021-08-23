@@ -65,8 +65,6 @@ export default {
 			playtime: data.playtime,
 		};
 
-		console.log(currentGame);
-
 		context.commit("setCurrentGame", currentGame);
 	},
 

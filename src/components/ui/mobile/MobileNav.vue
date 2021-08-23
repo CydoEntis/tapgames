@@ -13,15 +13,15 @@ export default {};
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   border-radius: 0 0 0 15px;
   background: #202020;
 
   i {
     color: #fff;
     cursor: pointer;
-    font-size: 32px;
+    font-size: 28px;
     transition: all 0.3s ease-in;
 
     &:hover {
@@ -40,7 +40,7 @@ export default {};
     i {
       color: #fff;
       cursor: pointer;
-      font-size: 22px;
+      font-size: 28px;
       transition: all 0.3s ease-in;
 
       &:hover {

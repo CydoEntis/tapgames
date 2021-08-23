@@ -60,4 +60,24 @@ export default {
     }
   }
 }
+
+@media screen and (max-width: 450px) {
+  .game-content {
+    header {
+      h1 {
+        font-size: 36px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .game-content {
+    header {
+      h1 {
+        font-size: 28px;
+      }
+    }
+  }
+}
 </style>
