@@ -34,15 +34,7 @@ export default {
   }
 }
 
-@media screen and (max-width: 450px) {
-  .game-esrb {
-    span {
-      font-size: 18px;
-    }
-  }
-}
-
-@media screen and (max-width: 360px) {
+@media screen and (max-height: 700px) {
   .game-esrb {
     span {
       font-size: 14px;
@@ -50,18 +42,10 @@ export default {
   }
 }
 
-@media screen and (max-width: 768px) and (max-height: 1024px) {
-  .game-genres {
-    span {
-      font-size: 22px;
-    }
-  }
-}
-
-@media screen and (max-width: 540px) and (max-height: 720px) {
+@media screen and (width: 1024px) and (height: 1366px) {
   .game-esrb {
     span {
-      font-size: 16px;
+      font-size: 22px;
     }
   }
 }

@@ -25,74 +25,37 @@ export default {
     width: 1em;
   }
 
-  &::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-  }
-
   &::-webkit-scrollbar-thumb {
     background-color: #202020;
     outline: 1px solid #202020;
   }
 }
 
-@media screen and (max-width: 1260px) {
+@media screen and (max-width: 1300px) {
   .game-description {
-    font-size: 18px;
-    max-height: 200px;
-  }
-}
-
-@media screen and (max-width: 960px) {
-  .game-description {
-    font-size: 16px;
-    max-height: 200px;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  .game-description {
-    font-size: 16px;
-    overflow: none;
     max-height: 100%;
+    overflow-y: none;
 
-    scrollbar-width: 1em;
-    scrollbar-color: #151515 #202020;
-
-    &::-webkit-scrollbar-track {
-      box-shadow: none;
+    &::-webkit-scrollbar {
+      width: 0;
     }
   }
 }
-
-@media screen and (max-width: 360px) {
+@media screen and (max-height: 700px) {
   .game-description {
     font-size: 14px;
   }
 }
 
-@media screen and (max-width: 768px) and (max-height: 1024px) {
+@media screen and (width: 768px) and (height: 1024px) {
   .game-description {
-    margin-top: 10px;
-    padding: 10px;
-    font-size: 20px;
-    max-height: 360px;
-    overflow-y: scroll;
+    font-size: 18px;
+  }
+}
 
-    scrollbar-width: 1em;
-    scrollbar-color: #151515 #202020;
-
-    &::-webkit-scrollbar {
-      width: 1em;
-    }
-
-    &::-webkit-scrollbar-track {
-      box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-    }
-
-    &::-webkit-scrollbar-thumb {
-      background-color: #202020;
-      outline: 1px solid #202020;
-    }
+@media screen and (width: 1024px) and (height: 1366px) {
+  .game-description {
+    font-size: 22px;
   }
 }
 </style>

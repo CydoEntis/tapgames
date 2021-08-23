@@ -164,4 +164,14 @@ export default {
     }
   }
 }
+
+@media screen and (width: 1024px) and (height: 1366px) {
+  .controls {
+    .reaction-btn {
+      font-size: 62px;
+      width: 220px;
+      height: 100px;
+    }
+  }
+}
 </style>

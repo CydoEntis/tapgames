@@ -81,4 +81,14 @@ a {
     height: 100%;
   }
 }
+
+@media screen and (width: 1024px) and (height: 1366px) {
+  .img-wrapper {
+    height: 55px;
+
+    h3 {
+      font-size: 22px;
+    }
+  }
+}
 </style>

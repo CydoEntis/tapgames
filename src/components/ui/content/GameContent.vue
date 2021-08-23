@@ -17,13 +17,13 @@
       enter-active-class="animate__animated animate__faster animate__fadeIn"
       leave-active-class="animate__animated animate__faster animate__fadeOut"
     >
-      <div
+      <section
         class="game-content"
         v-if="getGameContentVisibility && !getIsMobileNavOpen"
       >
         <banner :title="gameInfo.name" :image="gameInfo.image" />
-        <div class="scrollable">
-          <section class="game__details">
+        <section class="game-content-body">
+          <div class="game__details">
             <div class="game__details-content">
               <platforms :platforms="gameInfo.platforms" />
               <genres :genres="gameInfo.genres" />
@@ -33,18 +33,16 @@
               <esrb :esrb="gameInfo.rating" />
               <metacritic :metacritic="gameInfo.metacritic" />
             </div>
-          </section>
-
-          <div class="game__details-footer">
-            <description :description="gameInfo.description" />
-            <stores :stores="gameInfo.stores" />
           </div>
-        </div>
+
+          <description :description="gameInfo.description" />
+          <stores :stores="gameInfo.stores" />
+        </section>
 
         <footer>
           <controls />
         </footer>
-      </div>
+      </section>
     </transition>
   </main>
 </template>
@@ -128,7 +126,7 @@ main {
   .game__details {
     display: flex;
     justify-content: space-between;
-    padding: 10px 15px 0px 15px;
+    padding: 10px 5px 0px 5px;
 
     &-content {
       display: flex;
@@ -141,39 +139,13 @@ main {
   }
 }
 
-@media screen and (max-width: 800px) {
-  main {
-    position: relative;
-
-    .navigation {
-      display: inline-block;
-      position: absolute;
-      top: 0;
-      right: 0;
-      z-index: 1000;
-    }
-
-    .main-content {
-      width: 100%;
-    }
-  }
-}
-
-@media screen and (max-width: 450px) {
-  .scrollable {
-    font-size: 18px;
-    height: 400px;
+@media screen and (max-width: 1300px) {
+  .game-content-body {
+    max-height: 420px;
     overflow-y: scroll;
-
-    scrollbar-width: 1em;
-    scrollbar-color: #151515 #202020;
 
     &::-webkit-scrollbar {
       width: 1em;
-    }
-
-    &::-webkit-scrollbar-track {
-      box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     }
 
     &::-webkit-scrollbar-thumb {
@@ -183,143 +155,63 @@ main {
   }
 }
 
-@media screen and (max-width: 375px) {
-  .game-description {
-    font-size: 16px;
-  }
-
-  .scrollable {
-    font-size: 18px;
-    height: 330px;
-    overflow-y: scroll;
+@media screen and (max-height: 850px) {
+  .game-content-body {
+    max-height: 450px;
   }
 }
 
-@media screen and (max-width: 375px) and (max-height: 812px) {
-  .game-description {
-    font-size: 16px;
-  }
-
-  .scrollable {
-    font-size: 18px;
-    height: 430px;
-    overflow-y: scroll;
-  }
-}
-
-@media screen and (max-width: 375px) and (max-height: 670px) {
-  .game-description {
-    font-size: 16px;
-  }
-
-  .scrollable {
-    font-size: 18px;
-    height: 350px;
-    overflow-y: scroll;
+@media screen and (max-width: 800px) {
+  main {
+    .navigation {
+      position: absolute;
+      right: 0;
+      display: inline-block;
+      z-index: 9999;
+    }
   }
 }
 
-@media screen and (max-width: 320px) {
-  .scrollable {
-    font-size: 18px;
-    height: 300px;
-    overflow-y: scroll;
+@media screen and (max-height: 750px) {
+  .game-content-body {
+    max-height: 400px;
   }
 }
 
-@media screen and (max-width: 415px) and (max-height: 830px) {
-  .game-description {
-    font-size: 16px;
-  }
-
-  .scrollable {
-    font-size: 18px;
-    height: 450px;
-    overflow-y: scroll;
+@media screen and (max-height: 700px) {
+  .game-content-body {
+    max-height: 350px;
   }
 }
 
-@media screen and (max-width: 411px) and (max-height: 735px) {
-  .game-description {
-    font-size: 16px;
-  }
-
-  .scrollable {
-    font-size: 18px;
-    height: 400px;
-    overflow-y: scroll;
+@media screen and (max-height: 600px) {
+  .game-content-body {
+    max-height: 300px;
   }
 }
 
-@media screen and (max-width: 360px) and (max-height: 640px) {
-  .game-description {
-    font-size: 16px;
-  }
-
-  .scrollable {
-    font-size: 18px;
-    height: 340px;
-    overflow-y: scroll;
+@media screen and (width: 360px) and (height: 760px) {
+  .game-content-body {
+    max-height: 420px;
   }
 }
 
-@media screen and (max-width: 360px) and (max-height: 568px) {
-  .game-description {
-    font-size: 14px;
-  }
-
-  .scrollable {
-    font-size: 18px;
-    height: 300px;
-    overflow-y: scroll;
+/* Tablets */
+@media screen and (width: 540px) and (height: 720px) {
+  .game-content-body {
+    max-height: 380px;
   }
 }
 
-@media screen and (max-width: 375px) and (max-height: 667px) {
-  .game-description {
-    font-size: 16px;
-  }
-
-  .scrollable {
-    font-size: 18px;
-    height: 360px;
-    overflow-y: scroll;
+@media screen and (width: 768px) and (height: 1024px) {
+  .game-content-body {
+    max-height: 100%;
   }
 }
 
-@media screen and (max-width: 375px) and (max-height: 667px) {
-  .game-description {
-    font-size: 16px;
-  }
-
-  .scrollable {
-    font-size: 18px;
-    height: 360px;
-    overflow-y: scroll;
-  }
-}
-
-@media screen and (max-width: 414px) and (max-height: 736px) {
-  .game-description {
-    font-size: 16px;
-  }
-
-  .scrollable {
-    font-size: 18px;
-    height: 400px;
-    overflow-y: scroll;
-  }
-}
-
-@media screen and (max-width: 540px) and (max-height: 720px) {
-  .game-description {
-    font-size: 16px;
-  }
-
-  .scrollable {
-    font-size: 18px;
-    height: 380px;
-    overflow-y: scroll;
+@media screen and (width: 1024px) and (height: 1366px) {
+  .game-content-body {
+    max-height: 100%;
   }
 }
 </style>

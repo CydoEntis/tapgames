@@ -36,34 +36,18 @@ export default {
   }
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-height: 700px) {
   .game-genres {
     span {
-      font-size: 18px;
+      font-size: 12px;
     }
   }
 }
 
-@media screen and (max-width: 360px) {
-  .game-genres {
-    span {
-      font-size: 14px;
-    }
-  }
-}
-
-@media screen and (max-width: 768px) and (max-height: 1024px) {
+@media screen and (width: 1024px) and (height: 1366px) {
   .game-genres {
     span {
       font-size: 22px;
-    }
-  }
-}
-
-@media screen and (max-width: 540px) and (max-height: 720px) {
-  .game-genres {
-    span {
-      font-size: 16px;
     }
   }
 }

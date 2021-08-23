@@ -16,27 +16,10 @@ export default {
   padding: 5px 0;
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (width: 1024px) and (height: 1366px) {
   .game-playtime {
-    font-size: 18px;
-  }
-}
-
-@media screen and (max-width: 360px) {
-  .game-playtime {
-    font-size: 16px;
-  }
-}
-
-@media screen and (max-width: 768px) and (max-height: 1024px) {
-  .game-playtime {
-    font-size: 24px;
-  }
-}
-
-@media screen and (max-width: 540px) and (max-height: 720px) {
-  .game-playtime {
-    font-size: 18px;
+    font-size: 26px;
+    padding: 5px 0;
   }
 }
 </style>

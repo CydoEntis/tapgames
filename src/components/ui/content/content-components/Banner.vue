@@ -61,21 +61,31 @@ export default {
   }
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-height: 700px) {
   .game-content {
     header {
       h1 {
-        font-size: 36px;
+        font-size: 32px;
       }
     }
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (width: 768px) and (height: 1024px) {
   .game-content {
     header {
       h1 {
-        font-size: 28px;
+        font-size: 48px;
+      }
+    }
+  }
+}
+
+@media screen and (width: 1024px) and (height: 1366px) {
+  .game-content {
+    header {
+      h1 {
+        font-size: 54px;
       }
     }
   }
