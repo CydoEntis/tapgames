@@ -3,12 +3,17 @@
     <div class="mobile-header">
       <the-title title="TapGames" />
     </div>
+
     <div class="mobile-controls">
-      <a @click="showLikes" :class="{ active: likesAreActive }">Likes</a>
-      <a @click="showDislikes" :class="{ active: dislikesAreActive }"
-        >Dislikes</a
-      >
-      <!-- </transition> -->
+      <div class="main-controls">
+        <router-link to="/home" @click="toggleMobileNav">Home</router-link>
+      </div>
+      <div class="category-controls">
+        <a @click="showLikes" :class="{ active: likesAreActive }">Likes</a>
+        <a @click="showDislikes" :class="{ active: dislikesAreActive }"
+          >Dislikes</a
+        >
+      </div>
     </div>
     <div class="mobile-content">
       <transition
@@ -89,9 +94,12 @@ export default {
       this.dislikesAreActive = true;
       this.likesAreActive = false;
     },
+    toggleMobileNav() {
+      this.$store.commit("setIsMobileNavOpen", !this.getIsMobileNavOpen);
+    },
   },
   computed: {
-    ...mapGetters(["getLikedGames", "getDislikedGames"]),
+    ...mapGetters(["getLikedGames", "getDislikedGames", "getIsMobileNavOpen"]),
   },
   created() {
     this.loadGames();
@@ -110,9 +118,9 @@ export default {
   }
 
   .mobile-controls {
-    text-align: center;
-    margin: 10px;
+    display: flex;
     transition: active 800ms ease-in;
+    margin: 10px;
 
     a {
       text-decoration: none;
@@ -127,6 +135,13 @@ export default {
       &:hover {
         opacity: 0.6;
       }
+    }
+    .main-controls {
+      width: 50%;
+    }
+    .category-controls {
+      width: 50%;
+      text-align: right;
     }
 
     .active {
