@@ -20,7 +20,7 @@ export default {
 
 <style lang="scss" scoped>
 .card__face-back {
-  transform: rotateY(180deg);
+  transform: rotateY(-180deg);
 
   .align {
     display: flex;

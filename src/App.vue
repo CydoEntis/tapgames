@@ -41,7 +41,7 @@ body {
   height: 100%;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-  /* -moz-backface-visibility: hidden; */
+  -moz-backface-visibility: hidden;
 }
 
 .game-ratings {

@@ -74,6 +74,7 @@ export default {
   align-items: space-between;
   border-radius: 15px;
   height: 600px;
+  /* transform: rotateY(180deg); */
 }
 
 @media screen and (max-width: 450px) {
