@@ -25,7 +25,6 @@ export default {};
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.75);
   z-index: 2;
-  cursor: pointer;
 }
 
 .landing {

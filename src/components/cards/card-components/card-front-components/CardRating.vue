@@ -40,8 +40,8 @@ export default {
 
 @media screen and (width: 1024px) and (height: 1366px) {
   .game-ratings {
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     span {
       font-size: 28px;
     }

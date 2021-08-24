@@ -53,8 +53,8 @@ export default {
 @media screen and (width: 1024px) and (height: 1366px) {
   .game-platforms {
     span {
-      font-size: 36px;
-      margin-right: 20px;
+      font-size: 28px;
+      margin-right: 15px;
     }
   }
 }

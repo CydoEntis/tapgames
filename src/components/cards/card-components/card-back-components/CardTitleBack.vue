@@ -19,4 +19,10 @@ h2 {
   padding: 10px;
   font-size: 28px;
 }
+
+@media screen and (max-width: 360px) {
+  h2 {
+    font-size: 22px;
+  }
+}
 </style>

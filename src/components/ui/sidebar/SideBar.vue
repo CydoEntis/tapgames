@@ -22,7 +22,10 @@
         leave-active-class="animate__animated animate__faster animate__fadeOut"
       >
         <div class="games-container" v-if="!hideLikes">
-          <transition-group tag="game-display">
+          <transition-group
+            enter-active-class="animate__animated animate__fadeIn"
+            leave-active-class="animate__animated animate__fadeOut"
+          >
             <game-display
               v-for="game in getLikedGames"
               :key="game.id"

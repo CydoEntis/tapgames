@@ -31,13 +31,13 @@ h2 {
 
 @media screen and (width: 768px) and (height: 1024px) {
   h2 {
-    font-size: 48px;
+    font-size: 30px;
   }
 }
 
 @media screen and (width: 1024px) and (height: 1366px) {
   h2 {
-    font-size: 54px;
+    font-size: 40px;
   }
 }
 </style>

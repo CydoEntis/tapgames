@@ -1,11 +1,17 @@
 <template>
   <div class="controls">
-    <button class="reaction-btn dislike" @click="dislikeGame" v-if="isLiked">
-      <i class="fas fa-heart-broken"></i>
-    </button>
-    <button class="reaction-btn like" @click="likeGame" v-if="isDisliked">
-      <i class="fas fa-heart"></i>
-    </button>
+    <transition
+      mode="out-in"
+      enter-active-class="animate__animated animate__faster animate__fadeIn"
+      leave-active-class="animate__animated animate__faster animate__fadeOut"
+    >
+      <button class="reaction-btn dislike" @click="dislikeGame" v-if="isLiked">
+        <i class="fas fa-heart-broken"></i>
+      </button>
+      <button class="reaction-btn like" @click="likeGame" v-else>
+        <i class="fas fa-heart"></i>
+      </button>
+    </transition>
   </div>
 </template>
 

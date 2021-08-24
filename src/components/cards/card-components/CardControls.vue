@@ -360,7 +360,7 @@ export default {
 @media screen and (width: 768px) and (height: 1024px) {
   .controls {
     position: absolute;
-    bottom: -100px;
+    bottom: 0;
     width: 100%;
   }
 }
@@ -368,7 +368,7 @@ export default {
 @media screen and (width: 1024px) and (height: 1366px) {
   .controls {
     position: absolute;
-    bottom: -200px;
+    bottom: 0;
     width: 100%;
   }
 }
