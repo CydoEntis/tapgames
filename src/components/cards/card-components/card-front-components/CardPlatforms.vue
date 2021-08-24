@@ -41,10 +41,8 @@ export default {
   }
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-height: 700px) {
   .game-platforms {
-    height: 60px;
-
     span {
       font-size: 22px;
       margin-right: 15px;
@@ -52,12 +50,11 @@ export default {
   }
 }
 
-@media screen and (max-width: 360px) {
+@media screen and (width: 1024px) and (height: 1366px) {
   .game-platforms {
-    height: 40px;
-
     span {
-      font-size: 18px;
+      font-size: 36px;
+      margin-right: 20px;
     }
   }
 }

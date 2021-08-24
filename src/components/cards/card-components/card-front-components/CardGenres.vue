@@ -51,18 +51,18 @@ export default {
   }
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-height: 700px) {
   .game-genres {
     span {
-      font-size: 18px;
+      font-size: 12px;
     }
   }
 }
 
-@media screen and (max-width: 360px) {
+@media screen and (width: 1024px) and (height: 1366px) {
   .game-genres {
     span {
-      font-size: 14px;
+      font-size: 22px;
     }
   }
 }

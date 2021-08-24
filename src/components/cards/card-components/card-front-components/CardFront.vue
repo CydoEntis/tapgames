@@ -56,7 +56,6 @@ export default {
 <style lang="scss" scoped>
 .card-info {
   width: 100%;
-  min-height: 330px;
   padding: 8px;
 }
 
@@ -100,4 +99,76 @@ export default {
     border-radius: none;
   }
 }
+
+////////////////////////////////
+@media screen and (max-height: 850px) {
+  .card-info {
+    max-height: 450px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  main {
+    .navigation {
+      position: absolute;
+      right: 0;
+      display: inline-block;
+      z-index: 9999;
+    }
+  }
+}
+
+@media screen and (max-height: 750px) {
+  .card-info {
+    max-height: 400px;
+  }
+}
+
+@media screen and (max-height: 700px) {
+  .card-info {
+    max-height: 350px;
+  }
+}
+
+@media screen and (max-height: 600px) {
+  .card-info {
+    max-height: 300px;
+  }
+}
+
+/* @media screen and (max-width: 320px) {
+  .card-info {
+    max-height: 150px;
+    overflow-y: scroll;
+    border: 2px solid red;
+
+    &::-webkit-scrollbar {
+      width: 1em;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #202020;
+      outline: 1px solid #202020;
+    }
+  }
+} */
+
+/* Tablets */
+@media screen and (width: 540px) and (height: 720px) {
+  .card-info {
+    max-height: 380px;
+  }
+}
+
+@media screen and (width: 768px) and (height: 1024px) {
+  .card-info {
+    max-height: 100%;
+  }
+}
+
+/* @media screen and (width: 1024px) and (height: 1366px) {
+  .card-info {
+    max-height: 100%;
+  }
+} */
 </style>

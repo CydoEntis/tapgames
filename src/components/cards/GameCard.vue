@@ -154,6 +154,33 @@ export default {
   }
 }
 
+@media screen and (width: 768px) and (height: 1024px) {
+  .scene {
+    width: 460px;
+    height: 700px;
+
+    perspective: 1000px;
+  }
+
+  .card {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@media screen and (width: 1024px) and (height: 1366px) {
+  .scene {
+    width: 560px;
+    height: 800px;
+  }
+
+  .card {
+    display: block;
+    height: 100%;
+    box-shadow: none;
+  }
+}
+
 @media screen and (max-width: 450px) {
   .scene {
     width: 100vw;
@@ -168,82 +195,6 @@ export default {
     height: 100%;
     box-shadow: none;
     border-radius: 0;
-  }
-}
-
-@media screen and (max-width: 1300px) {
-  .card-info {
-    max-height: 420px;
-    overflow-y: scroll;
-
-    &::-webkit-scrollbar {
-      width: 1em;
-    }
-
-    &::-webkit-scrollbar-thumb {
-      background-color: #202020;
-      outline: 1px solid #202020;
-    }
-  }
-}
-
-@media screen and (max-height: 850px) {
-  .card-info {
-    max-height: 450px;
-  }
-}
-
-@media screen and (max-width: 800px) {
-  main {
-    .navigation {
-      position: absolute;
-      right: 0;
-      display: inline-block;
-      z-index: 9999;
-    }
-  }
-}
-
-@media screen and (max-height: 750px) {
-  .card-info {
-    max-height: 400px;
-  }
-}
-
-@media screen and (max-height: 700px) {
-  .card-info {
-    max-height: 350px;
-  }
-}
-
-@media screen and (max-height: 600px) {
-  .card-info {
-    max-height: 300px;
-  }
-}
-
-@media screen and (width: 360px) and (height: 760px) {
-  .card-info {
-    max-height: 420px;
-  }
-}
-
-/* Tablets */
-@media screen and (width: 540px) and (height: 720px) {
-  .card-info {
-    max-height: 380px;
-  }
-}
-
-@media screen and (width: 768px) and (height: 1024px) {
-  .card-info {
-    max-height: 100%;
-  }
-}
-
-@media screen and (width: 1024px) and (height: 1366px) {
-  .card-info {
-    max-height: 100%;
   }
 }
 </style>

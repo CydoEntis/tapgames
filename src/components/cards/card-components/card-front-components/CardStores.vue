@@ -43,24 +43,19 @@ export default {
   }
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-height: 700px) {
   .game-stores {
+    margin: 10px 5px;
     a {
-      font-size: 18px;
-      padding: 5px 10px;
-      margin-right: 6px;
-      margin-bottom: 6px;
+      font-size: 14px;
     }
   }
 }
 
-@media screen and (max-width: 360px) {
+@media screen and (width: 1024px) and (height: 1366px) {
   .game-stores {
     a {
-      font-size: 14px;
-      padding: 3px 6px;
-      margin-right: 5px;
-      margin-bottom: 5px;
+      font-size: 26px;
     }
   }
 }

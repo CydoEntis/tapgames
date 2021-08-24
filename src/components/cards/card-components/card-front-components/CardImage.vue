@@ -50,4 +50,30 @@ export default {
     }
   }
 }
+
+@media screen and (width: 768px) and (height: 1024px) {
+  .img-wrapper {
+    max-width: 100%;
+
+    img {
+      border-radius: 15px;
+      width: 100%;
+      min-height: 250px;
+      max-height: 250px;
+    }
+  }
+}
+
+@media screen and (width: 1024px) and (height: 1366px) {
+  .img-wrapper {
+    max-width: 100%;
+
+    img {
+      border-radius: 15px;
+      width: 100%;
+      min-height: 250px;
+      max-height: 250px;
+    }
+  }
+}
 </style>

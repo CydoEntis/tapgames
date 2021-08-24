@@ -28,18 +28,22 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@media screen and (max-width: 450px) {
+@media screen and (max-height: 700px) {
   .game-ratings {
+    width: 40px;
+    height: 40px;
     span {
-      font-size: 26px;
+      font-size: 22px;
     }
   }
 }
 
-@media screen and (max-width: 360px) {
+@media screen and (width: 1024px) and (height: 1366px) {
   .game-ratings {
+    width: 60px;
+    height: 60px;
     span {
-      font-size: 18px;
+      font-size: 28px;
     }
   }
 }
