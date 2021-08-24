@@ -1,5 +1,5 @@
 <template>
-  <div class="card__face card__face-back">
+  <div class="card__face card__face-back" :class="{ isSafari: 'is-safari' }">
     <div class="align">
       <card-controls />
       <card-title-back />
@@ -15,12 +15,25 @@ import CardDescription from "./CardDescription.vue";
 
 export default {
   components: { CardControls, CardDescription, CardTitleBack },
+  data() {
+    return {
+      isSafari: null,
+    };
+  },
+  created() {
+    this.isSafari =
+      navigator.vendor &&
+      navigator.vendor.indexOf("Apple") > -1 &&
+      navigator.userAgent &&
+      navigator.userAgent.indexOf("CriOS") == -1 &&
+      navigator.userAgent.indexOf("FxiOS") == -1;
+  },
 };
 </script>
 
 <style lang="scss" scoped>
 .card__face-back {
-  transform: rotateY(-180deg);
+  transform: rotateY(180deg);
 
   .align {
     display: flex;
@@ -31,6 +44,10 @@ export default {
     border-radius: 15px 0 15px 0;
     color: #ffffff66;
   }
+}
+
+.is-safari {
+  background: none;
 }
 
 @media screen and (max-width: 450px) {

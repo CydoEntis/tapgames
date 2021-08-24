@@ -1,5 +1,5 @@
 <template>
-  <div class="card__face card__face--front">
+  <div class="card__face card__face--front" :class="{ isSafari: 'is-safari' }">
     <card-image />
     <div class="card-info">
       <div class="align">
@@ -48,7 +48,17 @@ export default {
     CardPlayTime,
   },
   data() {
-    return {};
+    return {
+      isSafari: null,
+    };
+  },
+  created() {
+    this.isSafari =
+      navigator.vendor &&
+      navigator.vendor.indexOf("Apple") > -1 &&
+      navigator.userAgent &&
+      navigator.userAgent.indexOf("CriOS") == -1 &&
+      navigator.userAgent.indexOf("FxiOS") == -1;
   },
 };
 </script>
@@ -74,7 +84,10 @@ export default {
   align-items: space-between;
   border-radius: 15px;
   height: 600px;
-  /* transform: rotateY(180deg); */
+}
+
+.is-safari {
+  background: none;
 }
 
 @media screen and (max-width: 450px) {
