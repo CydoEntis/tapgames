@@ -1,5 +1,5 @@
 <template>
-  <div class="card__face card__face--front" :class="{ isSafari: 'is-safari' }">
+  <div class="card__face card__face--front" :class="{ safari: isSafari }">
     <card-image />
     <div class="card-info">
       <div class="align">
@@ -52,13 +52,17 @@ export default {
       isSafari: null,
     };
   },
+  methods: {
+    detectSafari() {
+      if (navigator.userAgent.indexOf("Safari") != -1) {
+        this.isSafari = false;
+      } else {
+        this.isSafari = true;
+      }
+    },
+  },
   created() {
-    this.isSafari =
-      navigator.vendor &&
-      navigator.vendor.indexOf("Apple") > -1 &&
-      navigator.userAgent &&
-      navigator.userAgent.indexOf("CriOS") == -1 &&
-      navigator.userAgent.indexOf("FxiOS") == -1;
+    this.detectSafari();
   },
 };
 </script>
@@ -86,8 +90,8 @@ export default {
   height: 600px;
 }
 
-.is-safari {
-  background: none;
+.safari {
+  background: transparent;
 }
 
 @media screen and (max-width: 450px) {
