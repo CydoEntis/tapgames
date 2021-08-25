@@ -30,25 +30,25 @@ export default {
 <style scoped lang="scss">
 .game-platforms {
   span {
-    font-size: 28px;
-    margin-right: 25px;
+    font-size: 20px;
+    margin-right: 8px;
   }
 }
 
-@media screen and (max-height: 700px) {
+@media screen and (min-width: 1024px) and (min-height: 1366px) {
   .game-platforms {
     span {
-      font-size: 22px;
-      margin-right: 15px;
+      font-size: 32px;
+      margin-right: 20px;
     }
   }
 }
 
-@media screen and (width: 1024px) and (height: 1366px) {
+@media screen and (width: 768px) and (height: 1024px) {
   .game-platforms {
     span {
-      font-size: 36px;
-      margin-right: 20px;
+      font-size: 26px;
+      margin-right: 12px;
     }
   }
 }

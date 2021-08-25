@@ -1,6 +1,6 @@
 <template>
   <div
-    class="game-ratings"
+    class="game-metacritic"
     :class="ratingColor"
     v-if="getGameList[getIndex].metacritic"
   >
@@ -28,23 +28,28 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@media screen and (max-height: 700px) {
-  .game-ratings {
-    width: 40px;
-    height: 40px;
-    span {
-      font-size: 22px;
-    }
+.game-metacritic {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+  width: 40px;
+  height: 40px;
+}
+
+@media screen and (min-width: 1024px) and (min-height: 1366px) {
+  .game-metacritic {
+    font-size: 48px;
+    width: 80px;
+    height: 80px;
   }
 }
 
-@media screen and (width: 1024px) and (height: 1366px) {
-  .game-ratings {
+@media screen and (width: 768px) and (height: 1024px) {
+  .game-metacritic {
+    font-size: 26px;
     width: 50px;
     height: 50px;
-    span {
-      font-size: 28px;
-    }
   }
 }
 </style>

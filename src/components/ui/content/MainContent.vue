@@ -43,38 +43,39 @@ export default {
 
 <style lang="scss" scoped>
 .main {
-  position: relative;
   width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 
   .navigation {
     display: none;
   }
 
-  .mobile-menu {
+  .main-content {
     width: 100%;
     height: 100vh;
-  }
-
-  .main-content {
-    width: 75%;
-    min-width: 440px;
-    height: 100vh;
     background: #151515;
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (min-width: 1025px) {
+  .main {
+    width: 100%;
+    .main-content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .navigation {
+      display: none;
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
   .main {
     position: relative;
-
+    height: 100vh;
+    display: block;
     .navigation {
       display: inline-block;
       position: absolute;
@@ -85,13 +86,6 @@ export default {
 
     .main-content {
       width: 100%;
-    }
-  }
-}
-
-@media screen and (max-width: 450px) {
-  .main {
-    .main-content {
       width: 100vw;
       min-width: 100%;
       height: 100vh;

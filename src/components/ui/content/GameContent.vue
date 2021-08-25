@@ -23,25 +23,18 @@
       >
         <banner :title="gameInfo.name" :image="gameInfo.image" />
         <section class="game-content-body">
-          <div class="game__details">
-            <div class="game__details-content">
-              <platforms :platforms="gameInfo.platforms" />
-              <genres :genres="gameInfo.genres" />
-              <playtime :playtime="gameInfo.playtime" />
-            </div>
-            <div class="game__details-content right">
-              <esrb :esrb="gameInfo.rating" />
-              <metacritic :metacritic="gameInfo.metacritic" />
-            </div>
+          <div class="flex-wrapper">
+            <platforms :platforms="gameInfo.platforms" />
+            <metacritic :metacritic="gameInfo.metacritic" />
           </div>
-
-          <description :description="gameInfo.description" />
+          <div class="flex-wrapper">
+            <genres :genres="gameInfo.genres" />
+            <esrb :esrb="gameInfo.rating" />
+          </div>
+          <playtime :playtime="gameInfo.playtime" />
           <stores :stores="gameInfo.stores" />
+          <description :description="gameInfo.description" />
         </section>
-
-        <footer>
-          <controls />
-        </footer>
       </section>
     </transition>
   </main>
@@ -111,8 +104,7 @@ export default {
 main {
   position: relative;
   width: 100%;
-  height: 100vh;
-  overflow: hidden;
+  height: 100%;
 
   .navigation {
     display: none;
@@ -121,6 +113,32 @@ main {
   .mobile-menu {
     width: 100%;
     height: 100vh;
+  }
+
+  .flex-wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+  }
+
+  .game-content {
+    .game-content-body {
+      height: 100vh;
+      padding: 8px;
+      /* overflow-y: auto;
+
+      scrollbar-width: 1em;
+      scrollbar-color: #151515 #202020;
+
+      &::-webkit-scrollbar {
+        width: 1em;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: #202020;
+        outline: 1px solid #202020;
+      } */
+    }
   }
 
   .game__details {
@@ -139,79 +157,81 @@ main {
   }
 }
 
-@media screen and (max-width: 1300px) {
-  .game-content-body {
-    max-height: 420px;
-    overflow-y: scroll;
-
-    &::-webkit-scrollbar {
-      width: 1em;
-    }
-
-    &::-webkit-scrollbar-thumb {
-      background-color: #202020;
-      outline: 1px solid #202020;
-    }
-  }
-}
-
-@media screen and (max-height: 850px) {
-  .game-content-body {
-    max-height: 450px;
-  }
-}
-
-@media screen and (max-width: 800px) {
+/* @media screen and (min-width: 320px) {
   main {
-    .navigation {
-      position: absolute;
-      right: 0;
-      display: inline-block;
-      z-index: 9999;
+    .game-content {
+      .game-content-body {
+        max-height: 275px;
+        overflow-y: auto;
+      }
     }
   }
 }
 
-@media screen and (max-height: 750px) {
-  .game-content-body {
-    max-height: 400px;
+@media screen and (min-width: 375px) {
+  main {
+    .game-content {
+      .game-content-body {
+        max-height: 450px;
+        overflow-y: auto;
+      }
+    }
   }
 }
 
-@media screen and (max-height: 700px) {
-  .game-content-body {
-    max-height: 350px;
+@media screen and (min-width: 375px) and (max-height: 667px) {
+  main {
+    .game-content {
+      .game-content-body {
+        max-height: 350px;
+        overflow-y: auto;
+      }
+    }
   }
 }
 
-@media screen and (max-height: 600px) {
-  .game-content-body {
-    max-height: 300px;
+@media screen and (min-width: 411px) {
+  main {
+    .game-content {
+      .game-content-body {
+        max-height: 350px;
+        overflow-y: auto;
+      }
+    }
   }
 }
 
-@media screen and (width: 360px) and (height: 760px) {
-  .game-content-body {
-    max-height: 420px;
+@media screen and (min-width: 414px) {
+  main {
+    .game-content {
+      .game-content-body {
+        max-height: 400px;
+        overflow-y: auto;
+      }
+    }
   }
 }
 
-/* Tablets */
-@media screen and (width: 540px) and (height: 720px) {
-  .game-content-body {
-    max-height: 380px;
+@media screen and (min-width: 540px) {
+  main {
+    .game-content {
+      .game-content-body {
+        max-height: 350px;
+        overflow-y: auto;
+      }
+    }
   }
 }
 
-@media screen and (width: 768px) and (height: 1024px) {
-  .game-content-body {
-    max-height: 100%;
-  }
-}
+@media screen and (min-width: 1100px) {
+  main {
+    .game-content {
+      .game-content-body {
+        max-height: 100%;
 
-@media screen and (width: 1024px) and (height: 1366px) {
-  .game-content-body {
-    max-height: 100%;
+        overflow-y: hidden;
+      }
+    }
   }
-}
+} */
 </style>

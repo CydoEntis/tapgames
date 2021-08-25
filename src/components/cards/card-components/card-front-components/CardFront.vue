@@ -2,23 +2,17 @@
   <div class="card__face card__face--front" :class="{ safari: isSafari }">
     <card-image />
     <div class="card-info">
-      <div class="align">
+      <div class="flex-wrapper">
         <card-platforms />
         <card-rating />
       </div>
-      <div class="align">
-        <card-title-front />
-      </div>
-      <div class="align">
+      <card-title-front />
+      <div class="flex-wrapper">
         <card-genres />
         <card-esrb />
       </div>
-      <div class="align">
-        <card-play-time />
-      </div>
-      <div class="align">
-        <card-stores />
-      </div>
+      <card-play-time />
+      <card-stores />
     </div>
     <card-controls />
   </div>
@@ -70,15 +64,21 @@ export default {
 <style lang="scss" scoped>
 .card-info {
   width: 100%;
+  max-height: 310px;
   padding: 8px;
-}
 
-.align {
-  margin-bottom: 8px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
+  overflow-y: scroll;
+  scrollbar-width: 1em;
+  scrollbar-color: #151515 #202020;
+
+  &::-webkit-scrollbar {
+    width: 1em;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #151515;
+    outline: 1px solid #151515;
+  }
 }
 
 .card__face--front {
@@ -87,106 +87,23 @@ export default {
   justify-self: space-between;
   align-items: space-between;
   border-radius: 15px;
-  height: 600px;
 }
 
-.safari {
-  background: transparent;
+.flex-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (min-width: 1024px) and (min-height: 1366px) {
   .card-info {
-    width: 100%;
-    padding: 8px;
-  }
-
-  .card__face--front {
-    height: 100vh;
-    border-radius: none;
-  }
-}
-
-@media screen and (max-width: 360px) {
-  .card-info {
-    width: 100%;
-    padding: 8px;
-  }
-
-  .card__face--front {
-    height: 100vh;
-    border-radius: none;
-  }
-}
-
-////////////////////////////////
-@media screen and (max-height: 850px) {
-  .card-info {
-    max-height: 450px;
-  }
-}
-
-@media screen and (max-width: 800px) {
-  main {
-    .navigation {
-      position: absolute;
-      right: 0;
-      display: inline-block;
-      z-index: 9999;
-    }
-  }
-}
-
-@media screen and (max-height: 750px) {
-  .card-info {
-    max-height: 400px;
-  }
-}
-
-@media screen and (max-height: 700px) {
-  .card-info {
-    max-height: 350px;
-  }
-}
-
-@media screen and (max-height: 600px) {
-  .card-info {
-    max-height: 300px;
-  }
-}
-
-/* @media screen and (max-width: 320px) {
-  .card-info {
-    max-height: 150px;
-    overflow-y: scroll;
-    border: 2px solid red;
-
-    &::-webkit-scrollbar {
-      width: 1em;
-    }
-
-    &::-webkit-scrollbar-thumb {
-      background-color: #202020;
-      outline: 1px solid #202020;
-    }
-  }
-} */
-
-/* Tablets */
-@media screen and (width: 540px) and (height: 720px) {
-  .card-info {
-    max-height: 380px;
+    max-height: 500px;
   }
 }
 
 @media screen and (width: 768px) and (height: 1024px) {
   .card-info {
-    max-height: 100%;
+    max-height: 500px;
   }
 }
-
-/* @media screen and (width: 1024px) and (height: 1366px) {
-  .card-info {
-    max-height: 100%;
-  }
-} */
 </style>

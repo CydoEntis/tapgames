@@ -21,4 +21,16 @@ a {
     opacity: 0.6;
   }
 }
+
+@media screen and (min-width: 1024px) and (min-height: 1366px) {
+  a {
+    font-size: 42px;
+  }
+}
+
+@media screen and (width: 768px) and (height: 1024px) {
+  a {
+    font-size: 36px;
+  }
+}
 </style>

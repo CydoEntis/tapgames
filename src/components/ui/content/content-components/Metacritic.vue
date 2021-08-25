@@ -1,5 +1,5 @@
 <template>
-  <div class="game-ratings" :class="metacriticColor" v-if="metacritic">
+  <div class="game-metacritic" :class="metacriticColor" v-if="metacritic">
     <span>{{ metacritic }}</span>
   </div>
 </template>
@@ -22,35 +22,28 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.game-ratings {
-  width: 50px;
-  height: 50px;
-  margin: 10px;
+.game-metacritic {
   display: flex;
   justify-content: center;
   align-items: center;
-  span {
-    font-size: 28px;
+  font-size: 22px;
+  width: 40px;
+  height: 40px;
+}
+
+@media screen and (min-width: 1024px) and (min-height: 1366px) {
+  .game-metacritic {
+    font-size: 48px;
+    width: 80px;
+    height: 80px;
   }
 }
 
-@media screen and (max-height: 700px) {
-  .game-ratings {
-    width: 40px;
-    height: 40px;
-    span {
-      font-size: 22px;
-    }
-  }
-}
-
-@media screen and (width: 1024px) and (height: 1366px) {
-  .game-ratings {
-    width: 60px;
-    height: 60px;
-    span {
-      font-size: 28px;
-    }
+@media screen and (width: 768px) and (height: 1024px) {
+  .game-metacritic {
+    font-size: 26px;
+    width: 50px;
+    height: 50px;
   }
 }
 </style>

@@ -3,14 +3,17 @@
     <div class="image-wrapper">
       <h1>{{ title }}</h1>
       <img :src="image" alt="" />
+      <controls />
     </div>
     <div id="overlay"></div>
   </header>
 </template>
 
 <script>
+import Controls from "./Controls.vue";
 export default {
   props: ["title", "image"],
+  components: { Controls },
 };
 </script>
 
@@ -37,6 +40,7 @@ export default {
     }
 
     .image-wrapper {
+      position: relative;
       width: 100%;
       height: 35vh;
 
@@ -57,36 +61,6 @@ export default {
       background: rgba(0, 0, 0, 0.5); /* Black see-through */
       width: 100%;
       height: 100%;
-    }
-  }
-}
-
-@media screen and (max-height: 700px) {
-  .game-content {
-    header {
-      h1 {
-        font-size: 32px;
-      }
-    }
-  }
-}
-
-@media screen and (width: 768px) and (height: 1024px) {
-  .game-content {
-    header {
-      h1 {
-        font-size: 48px;
-      }
-    }
-  }
-}
-
-@media screen and (width: 1024px) and (height: 1366px) {
-  .game-content {
-    header {
-      h1 {
-        font-size: 54px;
-      }
     }
   }
 }

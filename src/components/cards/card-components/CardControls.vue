@@ -1,12 +1,12 @@
 <template>
   <div class="controls">
-    <button class="reaction-btn dislike" @click="dislikeGame">
+    <button class="dislike" @click="dislikeGame">
       <i class="fas fa-heart-broken"></i>
     </button>
-    <button class="reaction-btn info" @click="flipCard">
+    <button class="info" @click="flipCard">
       <i class="fas fa-info-circle"></i>
     </button>
-    <button class="reaction-btn like" @click="likeGame">
+    <button class="like" @click="likeGame">
       <i class="fas fa-heart"></i>
     </button>
   </div>
@@ -270,106 +270,59 @@ export default {
 .controls {
   position: absolute;
   bottom: 0;
-  display: flex;
-  justify-content: space-between;
   width: 100%;
+  display: flex;
+  border: 1px solid #151515;
 
-  .reaction-btn {
+  button {
     outline: none;
-    border: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    font-size: 32px;
-    width: 75px;
-    height: 65px;
+    border: 2px solid #151515;
     background: #151515;
-    border-bottom: 5px solid #151515;
-    transition: all 200ms ease-in;
+    height: 60px;
+    font-size: 32px;
+    transition: all 300ms ease-in;
     cursor: pointer;
 
     &:hover {
-      border-bottom: 5px solid #ffffff66;
+      opacity: 0.6;
     }
-  }
-
-  .info {
-    width: 125px;
-    border-radius: 15px 15px 0 0;
-    color: #ffffff66;
   }
 
   .like {
-    border-radius: 15px 0 15px 0;
     color: #526ffd;
+    width: 35%;
+    /* border-radius: 0 0 15px 0; */
   }
 
   .dislike {
-    border-radius: 0 15px 0 15px;
     color: #c85849;
+    width: 35%;
+    /* border-radius: 0 0 0 15px; */
+  }
+
+  .info {
+    border-left: 1px rgb(31, 31, 31) solid;
+    border-right: 1px rgb(31, 31, 31) solid;
+    color: hsla(0, 0%, 100%, 0.4);
+    width: 40%;
   }
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (min-width: 1024px) and (min-height: 1366px) {
   .controls {
-    position: absolute;
-    bottom: 0;
-
-    .reaction-btn {
-      width: 85px;
-      height: 75px;
-      font-size: 42px;
-    }
-    .info {
-      width: 175px;
-    }
-    .like {
-      border-radius: 15px 0 0 0;
-    }
-
-    .dislike {
-      border-radius: 0 15px 0 0;
-    }
-  }
-}
-
-@media screen and (max-width: 360px) {
-  .controls {
-    position: absolute;
-    bottom: 0;
-
-    .reaction-btn {
-      width: 65px;
-      height: 55px;
-      font-size: 32px;
-    }
-    .info {
-      width: 125px;
-    }
-    .like {
-      border-radius: 15px 0 0 0;
-    }
-
-    .dislike {
-      border-radius: 0 15px 0 0;
+    button {
+      height: 100px;
+      font-size: 58px;
     }
   }
 }
 
 @media screen and (width: 768px) and (height: 1024px) {
   .controls {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-  }
-}
-
-@media screen and (width: 1024px) and (height: 1366px) {
-  .controls {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
+    button {
+      height: 80px;
+      font-size: 48px;
+    }
   }
 }
 </style>

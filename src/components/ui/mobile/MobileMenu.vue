@@ -173,6 +173,34 @@ export default {
     }
   }
 }
+
+@media screen and (min-width: 1024px) and (min-height: 1366px) {
+  .mobile {
+    .mobile-controls {
+      margin-top: 75px;
+      font-size: 32px;
+      a {
+        border-radius: 35px;
+        padding: 5px 10px;
+        margin-right: 10px;
+      }
+    }
+  }
+}
+
+@media screen and (width: 768px) and (height: 1024px) {
+  .mobile {
+    .mobile-controls {
+      margin-top: 65px;
+      font-size: 22px;
+      a {
+        border-radius: 35px;
+        padding: 5px 10px;
+        margin-right: 10px;
+      }
+    }
+  }
+}
 </style>
 
 

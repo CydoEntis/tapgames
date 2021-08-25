@@ -32,25 +32,26 @@ export default {
 
 <style lang="scss" scoped>
 .game-esrb {
-  margin: 5px 0;
-
   span {
-    padding: 3px 6px;
     border-radius: 15px;
-  }
-}
-@media screen and (max-height: 700px) {
-  .game-esrb {
-    span {
-      font-size: 14px;
-    }
+    padding: 0.1em 0.4em;
   }
 }
 
 @media screen and (width: 1024px) and (height: 1366px) {
   .game-esrb {
     span {
-      font-size: 22px;
+      font-size: 32px;
+      border-radius: 25px;
+    }
+  }
+}
+
+@media screen and (width: 768px) and (height: 1024px) {
+  .game-esrb {
+    span {
+      font-size: 24px;
+      border-radius: 25px;
     }
   }
 }

@@ -177,32 +177,9 @@ export default {
   }
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1024px) {
   .sidebar {
     display: none;
-  }
-}
-
-@media screen and (width: 1024px) and (height: 1366px) {
-  .sidebar {
-    .sidebar-controls {
-      display: flex;
-      transition: active 800ms ease-in;
-      margin: 5px;
-
-      a {
-        font-size: 26px;
-        border-radius: 25px;
-      }
-
-      .main-controls {
-        width: 45%;
-      }
-      .category-controls {
-        width: 50%;
-        text-align: right;
-      }
-    }
   }
 }
 </style>

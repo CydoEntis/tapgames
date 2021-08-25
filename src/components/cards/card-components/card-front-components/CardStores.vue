@@ -23,18 +23,21 @@ export default {
 
 <style scoped lang="scss">
 .game-stores {
+  margin: 10px 0;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
   a {
-    display: inline-block;
-    border: 1px solid #ffffff66;
-    border-radius: 15px;
-    text-transform: capitalize;
+    font-size: 16px;
     text-decoration: none;
-    padding: 3px 6px;
-    margin-right: 5px;
-    margin-bottom: 5px;
-    color: #ffffff66;
-    cursor: pointer;
+    color: #797974;
+    border-radius: 15px;
+    border: 1px solid #797974;
+    padding: 0.1em 0.2em;
+    margin-right: 0.3rem;
+    margin-bottom: 0.3rem;
     transition: all 300ms ease-in;
+    cursor: pointer;
 
     &:hover {
       color: #fff;
@@ -43,19 +46,20 @@ export default {
   }
 }
 
-@media screen and (max-height: 700px) {
+@media screen and (min-width: 1024px) and (min-height: 1366px) {
   .game-stores {
-    margin: 10px 5px;
     a {
-      font-size: 14px;
+      font-size: 36px;
+      border-radius: 25px;
     }
   }
 }
 
-@media screen and (width: 1024px) and (height: 1366px) {
+@media screen and (width: 768px) and (height: 1024px) {
   .game-stores {
     a {
       font-size: 26px;
+      border-radius: 25px;
     }
   }
 }

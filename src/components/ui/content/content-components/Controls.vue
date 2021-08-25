@@ -5,10 +5,10 @@
       enter-active-class="animate__animated animate__faster animate__fadeIn"
       leave-active-class="animate__animated animate__faster animate__fadeOut"
     >
-      <button class="reaction-btn dislike" @click="dislikeGame" v-if="isLiked">
+      <button class="dislike" @click="dislikeGame" v-if="isLiked">
         <i class="fas fa-heart-broken"></i>
       </button>
-      <button class="reaction-btn like" @click="likeGame" v-else>
+      <button class="like" @click="likeGame" v-else>
         <i class="fas fa-heart"></i>
       </button>
     </transition>
@@ -124,59 +124,51 @@ export default {
 .controls {
   position: absolute;
   bottom: 0;
+  right: 0;
+  z-index: 1000;
   display: flex;
-  justify-content: center;
-  width: 100%;
 
-  .reaction-btn {
+  button {
+    border-radius: 15px 0 0 0;
     outline: none;
     border: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    font-size: 42px;
-    width: 120px;
-    height: 75px;
     background: #202020;
-    border-bottom: 5px solid #202020;
-    transition: all 200ms ease-in;
+    height: 60px;
+    width: 60px;
+    font-size: 32px;
+    transition: all 300ms ease-in;
     cursor: pointer;
 
     &:hover {
-      border-bottom: 5px solid #ffffff66;
+      opacity: 0.6;
     }
   }
 
   .like {
-    border-radius: 15px 15px 0 0;
     color: #526ffd;
-    border-left: 1px solid #151515;
   }
 
   .dislike {
-    border-radius: 15px 15px 0 0;
     color: #c85849;
-    border-right: 1px solid #151515;
   }
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (width: 768px) and (height: 1024px) {
   .controls {
-    .reaction-btn {
-      font-size: 30px;
+    button {
+      height: 80px;
       width: 80px;
-      height: 60px;
+      font-size: 38px;
     }
   }
 }
 
-@media screen and (width: 1024px) and (height: 1366px) {
+@media screen and (min-width: 1024px) and (min-height: 1366px) {
   .controls {
-    .reaction-btn {
-      font-size: 62px;
-      width: 220px;
+    button {
       height: 100px;
+      width: 100px;
+      font-size: 48px;
     }
   }
 }

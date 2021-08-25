@@ -1,10 +1,8 @@
 <template>
   <div class="card__face card__face-back" :class="{ safari: isSafari }">
-    <div class="align">
-      <card-controls />
-      <card-title-back />
-    </div>
+    <card-title-back />
     <card-description />
+    <card-controls />
   </div>
 </template>
 
@@ -37,33 +35,11 @@ export default {
 
 <style lang="scss" scoped>
 .card__face-back {
+  overflow: hidden;
   transform: rotateY(180deg);
 
-  .align {
-    display: flex;
-    justify-content: space-between;
-  }
-
   .back {
-    border-radius: 15px 0 15px 0;
     color: #ffffff66;
-  }
-}
-
-.safari {
-  background: transparent;
-}
-
-@media screen and (max-width: 450px) {
-  .card-info {
-    width: 100%;
-    min-height: 450px;
-    padding: 8px;
-  }
-
-  .card__face--back {
-    height: 100vh;
-    border-radius: none;
   }
 }
 </style>

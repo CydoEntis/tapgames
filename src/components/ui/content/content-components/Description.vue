@@ -12,11 +12,10 @@ export default {
 
 <style lang="scss" scoped>
 .game-description {
+  height: 100%;
   margin-top: 10px;
   padding: 10px;
-  font-size: 18px;
-  max-height: 320px;
-  overflow-y: scroll;
+  font-size: 14px;
 
   scrollbar-width: 1em;
   scrollbar-color: #151515 #202020;
@@ -26,36 +25,43 @@ export default {
   }
 
   &::-webkit-scrollbar-thumb {
-    background-color: #202020;
-    outline: 1px solid #202020;
+    background-color: #151515;
+    outline: 1px solid #151515;
   }
 }
-
-@media screen and (max-width: 1300px) {
+/* 
+@media screen and (min-width: 1100px) {
   .game-description {
+    font-size: 16px;
     max-height: 100%;
-    overflow-y: none;
+  }
+}
 
-    &::-webkit-scrollbar {
-      width: 0;
-    }
-  }
-}
-@media screen and (max-height: 700px) {
+@media screen and (min-height: 640px) {
   .game-description {
-    font-size: 14px;
+    font-size: 16px;
+    height: 400px;
   }
-}
+} */
+
+/* @media screen and (min-height: 823px) {
+  .game-description {
+    font-size: 18px;
+    height: 550px;
+  }
+} */
 
 @media screen and (width: 768px) and (height: 1024px) {
   .game-description {
-    font-size: 18px;
+    font-size: 22px;
+    height: 600px;
   }
 }
 
-@media screen and (width: 1024px) and (height: 1366px) {
+@media screen and (min-width: 1024px) and (min-height: 1366px) {
   .game-description {
-    font-size: 22px;
+    font-size: 28px;
+    height: 800px;
   }
 }
 </style>

@@ -34,11 +34,9 @@ body {
 .card__face {
   position: absolute;
   width: 100%;
+  height: 100%;
   background: #202020;
 
-  border-radius: 15px;
-
-  height: 100%;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   -moz-backface-visibility: hidden;
@@ -68,5 +66,11 @@ body {
 .no-rating {
   border: 1px solid #ffffff66;
   color: #ffffff66;
+}
+
+@media screen and (max-width: 320px) {
+  .card__face {
+    height: 100vh;
+  }
 }
 </style>

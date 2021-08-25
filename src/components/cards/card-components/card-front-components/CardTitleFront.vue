@@ -14,30 +14,18 @@ export default {
 
 <style scoped lang="scss">
 h2 {
-  font-size: 28px;
+  font-size: 24px;
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (min-width: 1024px) and (min-height: 1366px) {
   h2 {
-    font-size: 36px;
-  }
-}
-
-@media screen and (max-height: 700px) {
-  h2 {
-    font-size: 32px;
+    font-size: 48px;
   }
 }
 
 @media screen and (width: 768px) and (height: 1024px) {
   h2 {
-    font-size: 30px;
-  }
-}
-
-@media screen and (width: 1024px) and (height: 1366px) {
-  h2 {
-    font-size: 40px;
+    font-size: 36px;
   }
 }
 </style>

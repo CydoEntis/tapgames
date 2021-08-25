@@ -44,7 +44,6 @@ a {
   position: relative;
   width: 100%;
   height: 45px;
-  border-radius: 15px;
   overflow: hidden;
   margin: 5px 0;
   cursor: pointer;
@@ -66,7 +65,6 @@ a {
   img {
     width: 100%;
     height: auto;
-    border-radius: 15px;
     /* height: 75px; */
   }
 
@@ -82,12 +80,22 @@ a {
   }
 }
 
-@media screen and (width: 1024px) and (height: 1366px) {
+@media screen and (min-width: 1024px) and (min-height: 1366px) {
   .img-wrapper {
-    height: 55px;
+    height: 100px;
 
     h3 {
-      font-size: 22px;
+      font-size: 36px;
+    }
+  }
+}
+
+@media screen and (width: 768px) and (height: 1024px) {
+  .img-wrapper {
+    height: 75px;
+
+    h3 {
+      font-size: 28px;
     }
   }
 }

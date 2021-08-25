@@ -132,8 +132,8 @@ export default {
 
 <style lang="scss" scoped>
 .scene {
-  width: 375px;
-  height: 600px;
+  width: 100%;
+  height: 100vh;
 
   perspective: 1000px;
 }
@@ -145,7 +145,7 @@ export default {
   transition: transform 1s;
   transform-style: preserve-3d;
 
-  /* background: #202020; */
+  background: #202020;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   border-radius: 15px;
 
@@ -154,47 +154,102 @@ export default {
   }
 }
 
-@media screen and (width: 768px) and (height: 1024px) {
+@media screen and (min-width: 1025px) {
   .scene {
-    width: 460px;
-    height: 700px;
+    width: 400px;
+    height: 600px;
 
     perspective: 1000px;
   }
+}
+
+/* @media screen and (min-width: 1025px) {
+  .scene {
+    width: 375px;
+    height: 600px;
+  }
 
   .card {
+    width: 375px;
+    height: 600px;
+  }
+}
+
+@media screen and (min-width: 768px) and (min-height: 1024px) {
+  .scene {
     width: 100%;
-    height: 100%;
+    height: 1024px !important;
   }
 }
 
-@media screen and (width: 1024px) and (height: 1366px) {
+@media screen and (min-width: 1024px) and (min-height: 1366px) {
   .scene {
-    width: 560px;
-    height: 800px;
-  }
-
-  .card {
-    display: block;
-    height: 100%;
-    box-shadow: none;
+    width: 100%;
+    height: 1366px !important;
   }
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (min-width: 768px) and (min-height: 735px) {
   .scene {
-    width: 100vw;
-    height: 100vh;
-
-    perspective: 1000px;
+    width: 100%;
+    height: 735px !important;
   }
 
   .card {
-    display: block;
-    width: 100vw;
-    height: 100%;
-    box-shadow: none;
     border-radius: 0;
   }
 }
+
+@media screen and (max-width: 414px) {
+  .scene {
+    width: 100%;
+    height: 736px;
+  }
+}
+
+@media screen and (max-width: 411px) and (max-height: 823px) {
+  .scene {
+    width: 100%;
+    height: 823px;
+  }
+}
+
+@media screen and (max-width: 411px) {
+  .scene {
+    width: 100%;
+    height: 731px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .scene {
+    width: 100%;
+    height: 667px;
+  }
+}
+
+@media screen and (min-height: 812px) and (min-width: 375px) {
+  .scene {
+    width: 100%;
+    height: 812px;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .scene {
+    width: 100%;
+    height: 640px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .scene {
+    width: 100%;
+    height: 100vh;
+  }
+
+  .card {
+    border-radius: 0;
+  }
+} */
 </style>
