@@ -61,4 +61,11 @@ export default {
     height: 800px;
   }
 }
+
+@media screen and (min-width: 1024px) {
+  .game-description {
+    height: 380px;
+    overflow-y: scroll;
+  }
+}
 </style>

@@ -125,19 +125,6 @@ main {
     .game-content-body {
       height: 100vh;
       padding: 8px;
-      /* overflow-y: auto;
-
-      scrollbar-width: 1em;
-      scrollbar-color: #151515 #202020;
-
-      &::-webkit-scrollbar {
-        width: 1em;
-      }
-
-      &::-webkit-scrollbar-thumb {
-        background-color: #202020;
-        outline: 1px solid #202020;
-      } */
     }
   }
 
@@ -157,81 +144,15 @@ main {
   }
 }
 
-/* @media screen and (min-width: 320px) {
+@media screen and (max-width: 1024px) {
   main {
-    .game-content {
-      .game-content-body {
-        max-height: 275px;
-        overflow-y: auto;
-      }
+    .navigation {
+      display: inline-block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      z-index: 999;
     }
   }
 }
-
-@media screen and (min-width: 375px) {
-  main {
-    .game-content {
-      .game-content-body {
-        max-height: 450px;
-        overflow-y: auto;
-      }
-    }
-  }
-}
-
-@media screen and (min-width: 375px) and (max-height: 667px) {
-  main {
-    .game-content {
-      .game-content-body {
-        max-height: 350px;
-        overflow-y: auto;
-      }
-    }
-  }
-}
-
-@media screen and (min-width: 411px) {
-  main {
-    .game-content {
-      .game-content-body {
-        max-height: 350px;
-        overflow-y: auto;
-      }
-    }
-  }
-}
-
-@media screen and (min-width: 414px) {
-  main {
-    .game-content {
-      .game-content-body {
-        max-height: 400px;
-        overflow-y: auto;
-      }
-    }
-  }
-}
-
-@media screen and (min-width: 540px) {
-  main {
-    .game-content {
-      .game-content-body {
-        max-height: 350px;
-        overflow-y: auto;
-      }
-    }
-  }
-}
-
-@media screen and (min-width: 1100px) {
-  main {
-    .game-content {
-      .game-content-body {
-        max-height: 100%;
-
-        overflow-y: hidden;
-      }
-    }
-  }
-} */
 </style>
