@@ -41,5 +41,10 @@ export default {
   .back {
     color: #ffffff66;
   }
+
+  .safari {
+    background: transparent !important;
+    backface-visibility: initial !important;
+  }
 }
 </style>

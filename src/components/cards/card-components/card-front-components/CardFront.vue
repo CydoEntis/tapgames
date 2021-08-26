@@ -82,16 +82,8 @@ export default {
 }
 
 .safari {
-  .card__face {
-    /* position: absolute;
-    width: 100%;
-    height: 100%; */
-    background: transparent;
-
-    /* backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-    -moz-backface-visibility: hidden; */
-  }
+  background: transparent !important;
+  backface-visibility: initial !important;
 }
 
 .card__face--front {

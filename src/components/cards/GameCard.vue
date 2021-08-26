@@ -147,7 +147,6 @@ export default {
 
   background: #202020;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  border-radius: 15px;
 
   &.is-flipped {
     transform: rotateY(180deg);
