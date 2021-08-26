@@ -104,7 +104,7 @@ export default {
 main {
   position: relative;
   width: 100%;
-  height: 100%;
+  /* height: 100%; */
 
   .navigation {
     display: none;
@@ -123,7 +123,7 @@ main {
 
   .game-content {
     .game-content-body {
-      height: 100vh;
+      /* height: 100vh; */
       padding: 8px;
     }
   }
